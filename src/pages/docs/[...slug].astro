@@ -1,25 +1,23 @@
 ---
 import DocsLayout from "../../layouts/DocsLayout.astro";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 
 const docs = await getCollection("docs");
 
 const slug = Astro.params.slug;
 const currentPath = Array.isArray(slug) ? slug.join("/") : slug;
 
-const doc = docs.find((entry) => entry.slug === currentPath);
+const doc = docs.find((entry) => entry.id === currentPath);
 
 if (!doc) {
-  return Astro.redirect("/404");
+  throw new Error(`Doc not found: ${currentPath}`);
 }
 
-const { Content } = await doc.render();
+const { Content } = await render(doc);
 ---
 
 <DocsLayout title={doc.data.title} description={doc.data.description}>
   <section class="docs-article">
-    <div class="docs-content">
-      <Content />
-    </div>
+    <Content />
   </section>
 </DocsLayout>

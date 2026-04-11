@@ -1,74 +1,363 @@
+/* =========================================================
+   global.css -- NORMAL (desktop/tablet/base)
+   Keep your variables exactly as-is.
+   Mobile-only overrides will come later.
+   ========================================================= */
+
+/* -----------------------------
+   Design Tokens (UNCHANGED)
+------------------------------ */
 :root {
-  --bg: #0b0b14;
-  --bg-secondary: #121224;
-  --text: #f5f7ff;
-  --text-muted: #b8bdd3;
-  --border: rgba(255, 255, 255, 0.08);
-  --accent-1: #03dbfc;
-  --accent-2: #7d19f7;
-  --max-width: 1200px;
-  --radius: 18px;
+  --color-bg: #0a0a0f;
+  --color-bg-secondary: #1a1a2e;
+  --color-text: #ffffff;
+  --color-text-muted: #ffffff;
+
+  --color-accent: #7e7eff;
+  --color-accent-bright: #7e7eff;
+
+  --color-border: #2a2a3e;
+
+  --bold-text-color: #6055f7;
+  --italic-text-color: #03e3fc;
+
+  --bg-glow: radial-gradient(
+      900px 500px at 20% 10%,
+      rgba(96, 85, 247, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 80% 30%,
+      rgba(3, 227, 252, 0.16),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 15% 85%,
+      rgba(96, 85, 247, 0.14),
+      transparent 65%
+    ),
+    radial-gradient(
+      900px 500px at 85% 80%,
+      rgba(3, 227, 252, 0.12),
+      transparent 65%
+    );
+
+  --gradient-heading: linear-gradient(
+    90deg,
+    #6055f7 0%,
+    #6055f7 45%,
+    #03e3fc 55%,
+    #03e3fc 100%
+  );
+
+  --grad-heading: linear-gradient(
+    60deg,
+    #6055f7 0%,
+    #6055f7 45%,
+    #03e3fc 55%,
+    #03e3fc 100%
+  );
+
+  --gradient-accent: linear-gradient(
+    45deg,
+    #6055f7 0%,
+    #6055f7 45%,
+    #03e3fc 55%,
+    #03e3fc 100%
+  );
+
+  --overlay-gradient-accent: linear-gradient(
+    45deg,
+    rgba(96, 85, 247, 0.72) 0%,
+    rgba(96, 85, 247, 0.72) 45%,
+    rgba(3, 227, 252, 0.68) 55%,
+    rgba(3, 227, 252, 0.68) 100%
+  );
+
+  --gradient-accent-hover: linear-gradient(
+    45deg,
+    #6055f7 0%,
+    #6055f7 45%,
+    #03e3fc 55%,
+    #03e3fc 100%
+  );
+
+  --heading-grad-size: 30% 100%;
+  --heading-grad-pos: 50% 50%;
+
+  --glass-bg: rgba(26, 26, 46, 0.55);
+  --glass-bg-strong: rgba(26, 26, 46, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-highlight: rgba(255, 255, 255, 0.18);
+
+  --glass-blur: 14px;
+  --glass-radius: 16px;
+
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --glass-shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.3);
+
+  --page-pad: clamp(1rem, 4vw, 2rem);
+  --card-pad: clamp(1rem, 3vw, 1.75rem);
+  --stack-gap: clamp(0.75rem, 2.5vw, 1.25rem);
+
+  --base-font-size: 16px;
+  --base-line-height: 1.7;
+
+  --heading-line-height: 1.2;
+
+  --h1-size: 1.75rem;
+  --h2-size: 1.5rem;
+  --h3-size: 1.25rem;
+  --h4-size: 1.125rem;
+  --h5-size: 1.125rem;
+
+  --heading-bg-size: 200% auto;
+  --heading-bg-pos: center;
 }
 
-* {
+/* -----------------------------
+   Normal reset (NOT aggressive)
+   - Keep layout predictable
+   - Avoid surprise "everything is 0"
+------------------------------ */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html {
-  font-family:
-    Inter,
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at top, rgba(125, 25, 247, 0.12), transparent 30%),
-    radial-gradient(circle at right, rgba(3, 219, 252, 0.08), transparent 25%),
-    var(--bg);
-  color: var(--text);
 }
 
-.site-shell {
-  min-height: 100vh;
+/* -----------------------------
+   Base / document styles
+------------------------------ */
+body {
+  background-color: var(--color-bg);
+  background-image: var(--bg-glow);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  color: var(--color-text);
+  font-family: "Hachi Maru Pop", system-ui, -apple-system, Segoe UI, Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: var(--base-font-size);
+  line-height: var(--base-line-height);
+  -webkit-font-smoothing: antialiased;
 }
 
-img {
+img,
+svg,
+video,
+canvas {
   max-width: 100%;
+  height: auto;
   display: block;
 }
 
-a {
+/* Forms inherit fonts by default */
+input,
+button,
+textarea,
+select {
+  font: inherit;
   color: inherit;
-  text-decoration: none;
 }
 
-p {
-  color: var(--text-muted);
-  line-height: 1.7;
-}
-
+/* Headings -- stable, readable, no weird clipping hacks */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  margin-top: 0;
-  line-height: 1.15;
+  margin: 0 0 0.75rem;
+  font-family: "Berkshire Swash", serif;
+  font-weight: 400;
+  background-image: var(--grad-heading);
+  background-size: var(--heading-bg-size);
+  background-position: var(--heading-bg-pos);
+  background-repeat: no-repeat;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  /* normal block flow prevents phantom spacing */
+  display: block;
+
+  /* keep glyphs safe without negative margins */
+  padding: 0.12em 0.18em;
 }
 
-main {
-  width: min(100% - 2rem, var(--max-width));
-  margin: 0 auto;
+h1 {
+  font-size: var(--h1-size);
+  letter-spacing: 0.05em;
+}
+h2 {
+  font-size: var(--h2-size);
+}
+h3 {
+  font-size: var(--h3-size);
+}
+h4 {
+  font-size: var(--h4-size);
+}
+h5 {
+  font-size: var(--h5-size);
+}
+h6 {
+  font-size: 1rem;
+}
+
+/* -----------------------------
+   Links (normal)
+------------------------------ */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent-bright);
+  opacity: 0.9;
+}
+
+/* -----------------------------
+   IMAGES
+------------------------------ */
+
+
+
+/* -----------------------------
+   Containers
+------------------------------ */
+.container {
+  width: min(800px, 100%);
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+.container-wide {
+  width: min(1200px, 100%);
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+/* Optional prose wrapper for long text blocks */
+.prose {
+  width: min(700px, 100%);
+  margin-inline: auto;
+}
+
+/* -----------------------------
+   GRADIENT BOX
+------------------------------ */
+  .gradient-box {
+    text-align: center;
+    max-width: 700px;
+    margin: 0;
+    padding: 2rem;
+    border: 2px dotted transparent; 
+    border-image: var(--gradient-accent) 1; 
+    border-radius: 8px; 
+    font-size: 0.85rem;
+    color: #ffffff;
+  }
+  
+/* -----------------------------
+   GRADIENT BUTTON
+------------------------------ */
+  .gradient-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+	font-family: "Berkshire Swash", serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    background: var(--overlay-gradient-accent);
+    border: none;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Button hover effect */
+  .gradient-btn:hover {
+    background: var(--gradient-accent);
+    transform: translateY(-2px);
+    box-shadow:
+      0 6px 20px rgba(0, 0, 0, 0.4),
+      0 0 30px rgba(90, 200, 250, 0.3);
+  }
+
+  /* Button active/pressed state */
+  .gradient-btn:active {
+    transform: translateY(0);
+  } 
+
+/* -----------------------------
+   Header / nav (keep simple; layout-specific styling can stay in BaseLayout)
+------------------------------ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+
+  background-color: rgba(10, 10, 15, 0.7);
+  background-image: var(--bg-glow);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1rem 0;
+}
+
+.site-header a,
+.nav a {
+  font-family: "Berkshire Swash", serif;
+  text-decoration: none;
+
+  background-image: var(--gradient-heading);
+  background-size: 125% auto;
+  background-position: center;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  transition: opacity 0.25s ease;
+}
+
+.site-header a:hover,
+.nav a:hover {
+  opacity: 0.8;
+}
+
+.nav-logo {
+  font-family: "Berkshire Swash", serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+
+  background-image: var(--gradient-heading);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 /* =========================
@@ -105,33 +394,6 @@ main {
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-/* Navigation */
-
-.nav-group + .nav-group {
-  margin-top: 1.5rem;
-}
-
-.nav-section {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  margin-bottom: 0.5rem;
-}
-
-.nav-link {
-  display: block;
-  padding: 0.4rem 0.6rem;
-  border-radius: 8px;
-  color: var(--text);
-  font-size: 0.9rem;
-  transition: background 0.2s ease;
-}
-
-.nav-link:hover {
-  background: rgba(255, 255, 255, 0.05);
 }
 
 /* Main */
@@ -187,5 +449,1062 @@ main {
 
   .docs-main {
     width: 100%;
+  }
+}
+
+/* -----------------------------
+   Glass utility (normal)
+------------------------------ */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--glass-radius);
+  box-shadow: var(--glass-shadow-soft);
+
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+
+  position: relative;
+}
+
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0)
+  );
+
+  opacity: 0.55;
+  border-radius: inherit;
+}
+
+.glass--strong {
+  background: var(--glass-bg-strong);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Blur fallbacks */
+@supports not (
+  (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+) {
+  .glass {
+    background: rgba(26, 26, 46, 0.92);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: rgba(26, 26, 46, 0.92);
+  }
+
+  .glass::before {
+    opacity: 0.25;
+  }
+}
+
+/* ============================================
+     PAGE WRAPPER
+     ========================================= */
+.page {
+width: min(1200px, 100%);
+margin: 0 auto;
+padding: 1.5rem 0.5rem;
+}
+
+/* =========================
+   DETAILS / SUMMARY BASE
+========================= */
+
+details {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(12px);
+  transition: all 0.25s ease;
+  margin-bottom: 1.5rem;
+}
+
+summary {
+  cursor: pointer;
+  padding: 1rem 3.5rem 1rem 1.25rem;
+  font-weight: 600;
+  color: white;
+  position: relative;
+  list-style: none;
+  background: var(--overlay-gradient-accent);
+  transition: all 0.25s ease;
+}
+
+/* hide default marker */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::marker {
+  display: none;
+  content: "";
+}
+
+/* =========================
+   CLOSED STATE ICON
+========================= */
+summary::after {
+  content: "";
+  position: absolute;
+  right: 1.15rem;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  transform: translateY(-50%);
+  transition: opacity 0.25s ease;
+  opacity: 0.9;
+
+  background: url("/img/icons/right.svg") center / contain no-repeat;
+}
+
+/* =========================
+   OPEN STATE ICON
+========================= */
+details[open] summary::after {
+  background: url("/img/icons/down.svg") center / contain no-repeat;
+}
+
+summary:hover {
+  background: var(--overlay-gradient-accent);
+}
+
+details > *:not(summary) {
+  padding: 1rem 1.25rem;
+  background: rgba(0, 0, 0, 0.72);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+details[open] {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* -----------------------------
+   Post cards system (keep your existing design, but clean structure)
+   NOTE: still "normal" (mobile overrides later)
+------------------------------ */
+.posts-grid,
+.post-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.1rem, 3vw, 2rem);
+  align-items: stretch;
+  text-align: left;
+}
+
+@media (min-width: 920px) {
+  .posts-grid,
+  .post-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .posts-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.post-card {
+  background: var(--overlay-gradient-accent);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  position: relative;
+}
+
+.post-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
+}
+
+.post-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.post-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(126, 126, 255, 0.14),
+    rgba(90, 200, 250, 0.1),
+    rgba(10, 10, 15, 0.22)
+  );
+}
+
+.post-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.95;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.post-card:hover .post-cover {
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+.post-lower {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.post-lower::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 15, 0.4);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.post-lower > * {
+  position: relative;
+  z-index: 1;
+}
+
+.post-link {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  color: inherit;
+  text-decoration: none;
+}
+
+.postcard-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--card-pad);
+  gap: var(--stack-gap);
+}
+
+.post-card h2,
+.post-card h3 {
+  margin: 0;
+  line-height: 1.2;
+
+  background: none !important;
+  -webkit-text-fill-color: #ffffff !important;
+  color: #ffffff !important;
+
+  display: block !important;
+  padding: 0; /* override heading padding inside cards */
+}
+
+.post-card h2,
+.post-card h3 {
+  font-size: clamp(1.35rem, 2.8vw, 1.8rem);
+}
+
+.post-date {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.post-description {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.read-more {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: auto;
+
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+
+  color: #ffffff;
+  background: rgba(10, 10, 15, 0.75);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.post-card:hover .read-more {
+  border-color: var(--color-accent);
+  background: rgba(10, 10, 15, 0.9);
+  transform: translateY(-1px);
+}
+
+.post-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0 var(--card-pad) var(--card-pad);
+}
+
+.tag {
+  background: var(--overlay-gradient-accent);
+  color: #ffffff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  border: 1px solid var(--color-border);
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.tag:hover {
+  background: var(--overlay-gradient-accent);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.post-card:hover .tag {
+  border-color: var(--color-accent);
+}
+
+/* -----------------------------
+   POST SEARCH CARDS
+------------------------------ */
+.post-card--search {
+  background: var(--overlay-gradient-accent);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  position: relative;
+}
+
+/* -----------------------------
+   POST SERIES CARDS
+------------------------------ */
+.post-series-card {
+  background: var(--overlay-gradient-accent);
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-clip: padding-box;
+}
+
+.post-series-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 15, 0.45);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.post-series-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.post-series-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.25rem;
+}
+
+  .series-badge {
+    display: inline-block;
+    background: rgba(90, 200, 250, 0.1);
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(90, 200, 250, 0.2);
+    align-self: flex-start;
+  }
+
+    .post-series-card h2 {
+    font-size: 1.5rem;
+    color: #ffffff;
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    -webkit-text-fill-color: #ffffff;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.25;
+  }
+
+  .post-series-description {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+  }
+
+.post-series-card .series-badge,
+.post-series-card h2,
+.post-series-card .post-description,
+.post-series-card .read-button {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.post-series-card .series-badge {
+  margin-bottom: 0.75rem;
+}
+
+.post-series-card h2 {
+  margin-bottom: 0.75rem;
+}
+
+.post-series-card .post-description {
+  margin-bottom: 1rem;
+}
+
+.post-series-card .read-button {
+  margin-bottom: 0;
+}
+
+.post-series-card:hover {
+  transform: none;
+}
+
+
+/* =========================================================
+   NAV (Global) -- NORMAL
+   ========================================================= */
+
+/* Layout */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  gap: 1rem;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Buttons */
+.menu-toggle,
+.notify-btn {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+
+  position: relative;
+  z-index: 10001; /* above dropdown */
+}
+
+.menu-icon-img,
+.notify-icon-img {
+  width: 24px;
+  height: 24px;
+  display: block;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-toggle:hover .menu-icon-img,
+.notify-btn:hover .notify-icon-img {
+  transform: rotate(90deg);
+  opacity: 0.9;
+}
+
+/* Dropdown base paint (shared) */
+.nav-links,
+.notification-popup {
+  position: fixed;
+  top: 4rem;
+  right: 2rem;
+  margin-top: 1rem;
+
+  background-color: rgba(26, 26, 46, 0.58);
+  background-image: var(--bg-glow);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-blend-mode: overlay;
+
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+
+  z-index: 10000;
+}
+
+/* Active state */
+.nav-links.active,
+.notification-popup.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Nav links panel */
+.nav-links {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  min-width: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Nav items */
+.nav-links a {
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+
+  /* gradient text */
+  font-family: "Berkshire Swash", serif;
+  background-image: var(--gradient-heading);
+  background-size: 30% auto;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  transition: opacity 0.2s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.85;
+}
+
+/* Optional: make Admin stand out slightly if you keep .nav-admin */
+.nav-links a.nav-admin {
+  opacity: 0.95;
+}
+
+/* Scrollbar (webkit) */
+.nav-links::-webkit-scrollbar {
+  width: 8px;
+}
+.nav-links::-webkit-scrollbar-track {
+  background: rgba(10, 10, 15, 0.5);
+  border-radius: 4px;
+}
+.nav-links::-webkit-scrollbar-thumb {
+  background: rgba(126, 126, 255, 0.5);
+  border-radius: 4px;
+}
+.nav-links::-webkit-scrollbar-thumb:hover {
+  background: rgba(126, 126, 255, 0.7);
+}
+
+/* Notification popup panel */
+.notification-popup {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 280px;
+}
+
+.notification-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-family: "Berkshire Swash", serif;
+
+  background-image: var(--gradient-heading);
+  background-size: 125% auto;
+  background-position: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.notification-description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.notification-action-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #7e7eff 0%, #5ac8fa 100%);
+  color: #ffffff;
+
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: opacity 0.2s ease;
+}
+
+.notification-action-btn:hover {
+  opacity: 0.85;
+}
+
+.notification-action-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.notification-action-btn.enabled {
+  background: rgba(90, 200, 250, 0.2);
+  color: #5ac8fa;
+}
+
+/* =========================================================
+   MOON SYSTEM -- NORMAL
+   ========================================================= */
+
+#moon-phase {
+  display: block;                 /* allows it to stretch horizontally */
+  width: 100%;
+  max-width: 900px;               /* match your content width */
+  margin: 0 auto 1.25rem;         /* adds bottom space */
+  padding: 0.6rem 1.5rem;         /* wider horizontally, flatter vertically */
+  background: var(--overlay-gradient-accent);
+  border: none;
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Layout */
+.moon-info-main {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem; /* tighter */
+}
+
+/* ICON -- make it actually visible */
+.moon-icon {
+  width: 34px;              /* fixed size, not em */
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.moon-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+/* Text stack */
+.moon-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+/* Title */
+.moon-title {
+  font-family: "Berkshire Swash", serif !important;
+  font-size: 1.15rem;       /* was 1.6rem -- this is why it was huge */
+  font-weight: 600;
+  letter-spacing: 0.02em;   /* less airy */
+  line-height: 1.15;
+
+  color: #ffffff !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* Details */
+.moon-details {
+  font-family: "Berkshire Swash", serif;
+  font-size: 0.85rem;       /* slightly smaller */
+  line-height: 1.2;
+  color: rgba(255,255,255,0.85);
+}
+
+/* =========================================================
+   FOOTER (Global) -- NORMAL
+   ========================================================= */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.rss-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-accent);
+  font-size: 0.9rem;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.rss-link:hover {
+  color: var(--color-accent-bright);
+  opacity: 0.9;
+}
+
+.rss-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* =========================================================
+   GLOBAL TOAST (Global) -- NORMAL
+   ========================================================= */
+#toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%) translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+
+  background: rgba(10, 10, 15, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  line-height: 1.35;
+
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 20000;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* =========================================================
+   global.css -- MOBILE ONLY OVERRIDES
+   Applies on screens <= 920px
+   ========================================================= */
+@media (max-width: 920px) {
+  /* -----------------------------
+     Token tweaks (mobile)
+  ------------------------------ */
+  :root {
+    --base-font-size: 15px;
+    --base-line-height: 1.55;
+
+    --heading-line-height: 1.12;
+
+    --h1-size: 2rem;
+    --h2-size: 1.625rem;
+    --h3-size: 1.25rem;
+    --h4-size: 1.125rem;
+    --h5-size: 1.125rem;
+
+    --heading-bg-size: 125% auto;
+    --heading-bg-pos: center;
+
+    /* tighter but still comfy on small screens */
+    --page-pad: 1rem;
+  }
+
+  /* -----------------------------
+     Background performance on iOS
+  ------------------------------ */
+  body {
+    background-attachment: scroll; /* iOS performance + fewer repaint glitches */
+  }
+
+  /* -----------------------------
+     Containers: padding & width
+  ------------------------------ */
+  .container,
+  .container-wide {
+    padding-inline: var(--page-pad);
+  }
+
+  .prose {
+    padding-inline: var(--page-pad);
+  }
+
+  /* -----------------------------
+     Headings: mobile rendering stability
+     (avoid gradient glyph clipping + phantom spacing)
+  ------------------------------ */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0 0 0.65rem;
+    /* slightly smaller padding so headings don’t look "puffy" on mobile */
+    padding: 0.1em 0.14em;
+  }
+
+  /* -----------------------------
+     Sticky header: safer on mobile
+  ------------------------------ */
+  .site-header {
+    padding: 0.75rem 0;
+    background-attachment: scroll;
+  }
+
+  .nav-logo {
+    font-size: 1.35rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* -----------------------------
+     Glass: lighter blur on mobile
+     (helps iOS + reduces jank)
+  ------------------------------ */
+  .glass {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  /* -----------------------------
+     Post cards: mobile tuning
+  ------------------------------ */
+  .posts-grid,
+  .post-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .post-media {
+    aspect-ratio: 2.5 / 1;
+  }
+
+  .postcard-content {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  .post-card h2,
+  .post-card h3 {
+    font-size: 1.4rem; /* readable without being huge */
+  }
+
+  .post-description {
+    line-height: 1.55; /* less vertical bloat */
+  }
+
+  .post-tags {
+    padding: 0 1rem 1rem;
+  }
+
+  .tag {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  /* -----------------------------
+     Lists: keep indentation sane
+  ------------------------------ */
+  ul,
+  ol {
+    padding-left: 1.25rem;
+    margin: 0 0 1rem;
+  }
+
+  blockquote {
+    padding: 0.85rem 0.9rem;
+    margin: 1rem 0;
+  }
+
+  hr {
+    margin: 1.25rem 0;
+  }
+
+/* ======= DETAILS / SUMMARY ======= */
+  details {
+    border-radius: 16px;
+    margin-bottom: 1.25rem;
+  }
+
+  summary {
+    padding: 0.9rem 3rem 0.9rem 1rem;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    background: var(--overlay-gradient-accent);
+  }
+
+  summary::after {
+    right: 1rem;
+    width: 16px;
+    height: 16px;
+  }
+
+  details > *:not(summary) {
+    padding: 0.95rem 1rem;
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+  
+  /* =========================================================
+   NAV (Global) -- MOBILE
+   ========================================================= */
+
+/* Drop-down panels become full-width-ish */
+.nav-links,
+.notification-popup {
+  top: 3.75rem;
+  right: var(--page-pad);
+  left: var(--page-pad);
+
+  width: auto;
+  min-width: unset;
+  max-width: 480px;
+
+  background-attachment: scroll; /* matches mobile body rule */
+}
+
+/* Slightly smaller link text so it fits nicely */
+.nav-links a {
+  font-size: 1.05rem;
+  padding: 0.55rem 0.9rem;
+}
+
+/* Taller scroll area on mobile */
+.nav-links {
+  max-height: min(60vh, 420px);
+}
+
+/* Notification popup sizing */
+.notification-popup {
+  min-width: unset;
+ }
+ 
+ /* =========================================================
+   MOON SYSTEM -- MOBILE
+   ========================================================= */
+.moon-info-main {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  padding: 1.5rem;
+  gap: 1.25rem;
+
+  margin: 1.5rem auto;
+}
+  #moon-phase {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .moon-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .moon-title {
+    font-size: 1.05rem;
+  }
+
+  .moon-details {
+    font-size: 0.8rem;
+  }
+  
+  
+/* =========================================================
+   PAGE WRAPPER (MOBILE)
+   ========================================================= */ 
+  .page {
+   padding: 1.5rem var(--page-pad);
+  }
+
+/* =========================================================
+   FOOTER (Global) -- MOBILE
+   ========================================================= */
+.site-footer {
+  padding: 1.5rem 0;
+  font-size: 0.85rem;
+}
+
+.footer-links {
+  margin-top: 0.75rem;
+  gap: 0.75rem;
+}
+
+/* =========================================================
+   GLOBAL TOAST (Global) -- MOBILE
+   ========================================================= */
+#toast {
+  bottom: 18px;
+  width: calc(100% - (var(--page-pad) * 2));
+  max-width: 520px;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.9rem;
   }
 }

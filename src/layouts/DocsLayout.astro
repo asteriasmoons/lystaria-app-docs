@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import { getCollection } from "astro:content";
 
 interface Props {
   title?: string;
@@ -8,51 +9,71 @@ interface Props {
 
 const { title, description } = Astro.props;
 
-const navItems = [
-  {
-    section: "Getting Started",
-    links: [
-      { label: "Introduction", href: "/docs/introduction" },
-      { label: "Quick Start", href: "/docs/quick-start" },
-    ],
-  },
-  {
-    section: "Core Features",
-    links: [
-      { label: "Reminders", href: "/docs/reminders" },
-      { label: "Habits", href: "/docs/habits" },
-      { label: "Journaling", href: "/docs/journaling" },
-      { label: "Calendar", href: "/docs/calendar" },
-      { label: "Reading", href: "/docs/reading" },
-    ],
-  },
-  {
-    section: "Other",
-    links: [{ label: "FAQ", href: "/docs/faq" }],
-  },
-];
+const docs = await getCollection("docs");
+
+const sortedDocs = [...docs].sort((a, b) => {
+  const sectionA = a.data.section ?? "Other";
+  const sectionB = b.data.section ?? "Other";
+
+  if (sectionA !== sectionB) {
+    return sectionA.localeCompare(sectionB);
+  }
+
+  const orderA = a.data.order ?? 999;
+  const orderB = b.data.order ?? 999;
+
+  if (orderA !== orderB) {
+    return orderA - orderB;
+  }
+
+  return a.data.title.localeCompare(b.data.title);
+});
+
+const groupedDocs = Object.entries(
+  sortedDocs.reduce(
+    (acc, doc) => {
+      const section = doc.data.section ?? "Other";
+      if (!acc[section]) acc[section] = [];
+      acc[section].push(doc);
+      return acc;
+    },
+    {} as Record<string, typeof sortedDocs>,
+  ),
+);
+
+const currentPath = Astro.url.pathname;
 ---
 
 <BaseLayout {title} {description}>
   <div class="docs-shell">
-    <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar-inner">
         <h2 class="logo">Lystaria Docs</h2>
 
         {
-          navItems.map((group) => (
+          groupedDocs.map(([section, docsInSection]) => (
             <div class="nav-group">
-              <p class="nav-section">{group.section}</p>
+              <p class="nav-section">{section}</p>
 
               <ul>
-                {group.links.map((link) => (
-                  <li>
-                    <a href={link.href} class="nav-link">
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
+                {docsInSection.map((doc) => {
+                  const href = `/docs/${doc.id}`;
+                  const isActive = currentPath === href;
+
+                  return (
+                    <li>
+                      <a
+                        href={href}
+                        class:list={{
+                          "nav-link": true,
+                          "nav-link-active": isActive,
+                        }}
+                      >
+                        {doc.data.title}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))
@@ -60,18 +81,13 @@ const navItems = [
       </div>
     </aside>
 
-    <!-- Main -->
     <div class="docs-main">
-      <!-- Topbar -->
       <header class="topbar">
         <div class="topbar-inner">
-          <span class="topbar-title">
-            {title ?? "Documentation"}
-          </span>
+          <span class="topbar-title">{title ?? "Documentation"}</span>
         </div>
       </header>
 
-      <!-- Content -->
       <main class="content">
         <slot />
       </main>
