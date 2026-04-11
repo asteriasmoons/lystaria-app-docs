@@ -964,6 +964,7 @@ details[open] {
   display: grid;
   gap: 1rem;
   margin: 1.25rem 0 2rem;
+  align-items: start;
 }
 
 .docs-grid--two {
@@ -984,6 +985,7 @@ details[open] {
 
 .docs-mini-card {
   display: block;
+  height: 100%;
   padding: 1rem 1rem 1.05rem;
   text-decoration: none;
   transition:
@@ -998,6 +1000,8 @@ details[open] {
   background: rgba(255, 255, 255, 0.045);
 }
 
+
+
 .docs-mini-card h3 {
   margin-bottom: 0.55rem;
 }
@@ -1005,7 +1009,10 @@ details[open] {
 .docs-mini-card p {
   margin: 0;
   color: rgba(255, 255, 255, 0.84);
-  line-height: 1.65;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .docs-note {
