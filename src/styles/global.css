@@ -4,6 +4,8 @@
    Mobile-only overrides will come later.
    ========================================================= */
 
+@import url("https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Lily+Script+One&display=swap");
+
 /* -----------------------------
    Design Tokens (UNCHANGED)
 ------------------------------ */
@@ -70,6 +72,14 @@
     45deg,
     rgba(96, 85, 247, 0.72) 0%,
     rgba(96, 85, 247, 0.72) 45%,
+    rgba(3, 227, 252, 0.68) 55%,
+    rgba(3, 227, 252, 0.68) 100%
+  );
+
+    --overlay-grad-accent: linear-gradient(
+    45deg,
+    rgba(96, 85, 247, 0.57) 0%,
+    rgba(96, 85, 247, 0.51) 45%,
     rgba(3, 227, 252, 0.68) 55%,
     rgba(3, 227, 252, 0.68) 100%
   );
@@ -145,8 +155,7 @@ body {
   background-attachment: fixed;
 
   color: var(--color-text);
-  font-family: "Hachi Maru Pop", system-ui, -apple-system, Segoe UI, Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: "Hachi Maru Pop", sans-serif;
   font-size: var(--base-font-size);
   line-height: var(--base-line-height);
   -webkit-font-smoothing: antialiased;
@@ -178,7 +187,7 @@ h4,
 h5,
 h6 {
   margin: 0 0 0.75rem;
-  font-family: "Berkshire Swash", serif;
+  font-family: "Lily Script One";
   font-weight: 400;
   background-image: var(--grad-heading);
   background-size: var(--heading-bg-size);
@@ -281,7 +290,7 @@ a:hover {
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 2rem;
-	font-family: "Berkshire Swash", serif;
+	font-family: "Lily Script One";
     font-size: 1.1rem;
     font-weight: 600;
     border-radius: 10px;
@@ -327,7 +336,7 @@ a:hover {
 
 .site-header a,
 .nav a {
-  font-family: "Berkshire Swash", serif;
+  font-family: "Lily Script One";
   text-decoration: none;
 
   background-image: var(--gradient-heading);
@@ -348,7 +357,7 @@ a:hover {
 }
 
 .nav-logo {
-  font-family: "Berkshire Swash", serif;
+  font-family: "Lily Script One";
   font-size: 1.5rem;
   font-weight: 400;
   letter-spacing: 0.1em;
@@ -591,6 +600,161 @@ details > *:not(summary) {
 
 details[open] {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================
+   Home Page
+========================= */
+
+.home-page {
+  width: min(100% - 2rem, 1100px);
+  margin: 0 auto;
+  padding: 4rem 0 5rem;
+}
+
+.hero {
+  padding: 3rem 0 2rem;
+}
+
+.eyebrow {
+  margin-bottom: 1rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+.hero-title {
+  max-width: 750px;
+  margin-bottom: 1rem;
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.hero-text {
+  max-width: 720px;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.button-primary,
+.button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0.85rem 1.15rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+
+.button-primary {
+  color: white;
+  background: linear-gradient(
+    90deg,
+    var(--accent-1),
+    var(--accent-2)
+  );
+}
+
+.button-secondary {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+}
+
+.button-primary:hover,
+.button-secondary:hover,
+.feature-card:hover {
+  transform: translateY(-1px);
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.feature-card {
+  display: block;
+  padding: 1.2rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0.015)
+    );
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
+}
+
+.feature-card:hover {
+  border-color: rgba(125, 25, 247, 0.28);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(125, 25, 247, 0.08),
+      rgba(3, 219, 252, 0.04)
+    );
+}
+
+.feature-label {
+  margin-bottom: 0.65rem;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.feature-card h2 {
+  margin-bottom: 0.6rem;
+  font-size: 1.1rem;
+}
+
+.feature-card p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 980px) {
+  .home-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .home-page {
+    width: min(100% - 1.25rem, 1100px);
+    padding: 2.5rem 0 4rem;
+  }
+
+  .hero {
+    padding: 1.5rem 0 1rem;
+  }
+
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-text {
+    font-size: 1rem;
+  }
 }
 
 /* -----------------------------
@@ -1011,7 +1175,7 @@ details[open] {
   border-radius: 8px;
 
   /* gradient text */
-  font-family: "Berkshire Swash", serif;
+  font-family: "Lily Script One";
   background-image: var(--gradient-heading);
   background-size: 30% auto;
   background-position: 0% 50%;
@@ -1060,7 +1224,7 @@ details[open] {
 .notification-title {
   margin: 0;
   font-size: 1.2rem;
-  font-family: "Berkshire Swash", serif;
+  font-family: "Lily Script One";
 
   background-image: var(--gradient-heading);
   background-size: 125% auto;
@@ -1159,7 +1323,7 @@ details[open] {
 
 /* Title */
 .moon-title {
-  font-family: "Berkshire Swash", serif !important;
+  font-family: "Lily Script One" !important;
   font-size: 1.15rem;       /* was 1.6rem -- this is why it was huge */
   font-weight: 600;
   letter-spacing: 0.02em;   /* less airy */
@@ -1174,7 +1338,7 @@ details[open] {
 
 /* Details */
 .moon-details {
-  font-family: "Berkshire Swash", serif;
+  font-family: "Lily Script One";
   font-size: 0.85rem;       /* slightly smaller */
   line-height: 1.2;
   color: rgba(255,255,255,0.85);

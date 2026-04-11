@@ -2,17 +2,20 @@
 import DocsLayout from "../../layouts/DocsLayout.astro";
 import { getCollection, render } from "astro:content";
 
-const docs = await getCollection("docs");
+export async function getStaticPaths() {
+  const docs = await getCollection("docs");
 
-const slug = Astro.params.slug;
-const currentPath = Array.isArray(slug) ? slug.join("/") : slug;
-
-const doc = docs.find((entry) => entry.id === currentPath);
-
-if (!doc) {
-  throw new Error(`Doc not found: ${currentPath}`);
+  return docs.map((doc) => ({
+    params: {
+      slug: doc.id.split("/"),
+    },
+    props: {
+      doc,
+    },
+  }));
 }
 
+const { doc } = Astro.props;
 const { Content } = await render(doc);
 ---
 

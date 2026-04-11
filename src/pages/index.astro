@@ -1,11 +1,80 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout
+  title="Lystaria Docs"
+  description="Official documentation for the Lystaria iOS app."
+>
+  <main class="home-page">
+    <section class="hero">
+      <p class="eyebrow">Lystaria Documentation</p>
+      <h1 class="hero-title">A gentle guide to using Lystaria</h1>
+      <p class="hero-text">
+        Explore the app’s core systems, learn how its features work together,
+        and find your way around Lystaria with clarity.
+      </p>
+
+      <div class="hero-actions">
+        <a href="/docs/get-started" class="button-primary">Get Started</a>
+        <a href="/docs/reminders" class="button-secondary">Explore Features</a>
+      </div>
+    </section>
+
+    <section class="home-grid">
+      <a href="/docs/get-started" class="feature-card">
+        <p class="feature-label">Getting Started</p>
+        <h2>Learn the basics</h2>
+        <p>
+          Start here for a simple introduction to the app and how the docs are
+          organized.
+        </p>
+      </a>
+
+      <a href="/docs/reminders" class="feature-card">
+        <p class="feature-label">Reminders</p>
+        <h2>Scheduling and structure</h2>
+        <p>
+          Understand how reminders work, how recurring logic behaves, and how
+          they fit into your daily flow.
+        </p>
+      </a>
+
+      <a href="/docs/habits" class="feature-card">
+        <p class="feature-label">Habits</p>
+        <h2>Build consistency gently</h2>
+        <p>
+          Learn how habits connect with your routines and how tracking works
+          across the app.
+        </p>
+      </a>
+
+      <a href="/docs/journaling" class="feature-card">
+        <p class="feature-label">Journaling</p>
+        <h2>Capture thoughts and reflections</h2>
+        <p>
+          Explore books, entries, writing flow, and the emotional heart of
+          Lystaria.
+        </p>
+      </a>
+
+      <a href="/docs/calendar" class="feature-card">
+        <p class="feature-label">Calendar</p>
+        <h2>See your time clearly</h2>
+        <p>
+          Understand event organization, scheduling views, and how planning fits
+          into the broader system.
+        </p>
+      </a>
+
+      <a href="/docs/reading" class="feature-card">
+        <p class="feature-label">Reading</p>
+        <h2>Track your reading life</h2>
+        <p>
+          Learn how books, sessions, goals, and reading progress work inside the
+          app.
+        </p>
+      </a>
+    </section>
+  </main>
+</BaseLayout>
