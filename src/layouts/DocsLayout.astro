@@ -10,52 +10,76 @@ interface Props {
 const { title, description } = Astro.props;
 
 const docs = await getCollection("docs");
+const currentPath = Astro.url.pathname;
 
-const sortedDocs = [...docs].sort((a, b) => {
-  const sectionA = a.data.section ?? "Other";
-  const sectionB = b.data.section ?? "Other";
+const sectionOrder = ["Getting Started", "Core Features", "Other"];
 
-  if (sectionA !== sectionB) {
-    return sectionA.localeCompare(sectionB);
-  }
-
-  const orderA = a.data.order ?? 999;
-  const orderB = b.data.order ?? 999;
-
-  if (orderA !== orderB) {
-    return orderA - orderB;
-  }
-
-  return a.data.title.localeCompare(b.data.title);
-});
-
-const groupedDocs = Object.entries(
-  sortedDocs.reduce(
-    (acc, doc) => {
-      const section = doc.data.section ?? "Other";
-      if (!acc[section]) acc[section] = [];
-      acc[section].push(doc);
-      return acc;
-    },
-    {} as Record<string, typeof sortedDocs>,
-  ),
+const groupedDocsMap = docs.reduce(
+  (acc, doc) => {
+    const section = doc.data.section ?? "Other";
+    if (!acc[section]) acc[section] = [];
+    acc[section].push(doc);
+    return acc;
+  },
+  {} as Record<string, typeof docs>,
 );
 
-const currentPath = Astro.url.pathname;
+const groupedDocs = Object.entries(groupedDocsMap)
+  .sort(([a], [b]) => {
+    const aIndex = sectionOrder.indexOf(a);
+    const bIndex = sectionOrder.indexOf(b);
+
+    if (aIndex === -1 && bIndex === -1) return a.localeCompare(b);
+    if (aIndex === -1) return 1;
+    if (bIndex === -1) return -1;
+
+    return aIndex - bIndex;
+  })
+  .map(
+    ([section, docsInSection]) =>
+      [
+        section,
+        [...docsInSection].sort((a, b) => {
+          const orderA = a.data.order ?? 999;
+          const orderB = b.data.order ?? 999;
+
+          if (orderA !== orderB) return orderA - orderB;
+          return a.data.title.localeCompare(b.data.title);
+        }),
+      ] as const,
+  );
 ---
 
 <BaseLayout {title} {description}>
   <div class="docs-shell">
-    <aside class="sidebar">
-      <div class="sidebar-inner">
-        <h2 class="logo">Lystaria Docs</h2>
+    <div class="docs-backdrop" data-sidebar-backdrop></div>
 
+    <aside class="sidebar-drawer" data-sidebar-drawer>
+      <div class="sidebar-top">
+        <div class="sidebar-brand">
+          <div class="sidebar-brand-icon">
+            <img src="/favicon.svg" alt="Lystaria" />
+          </div>
+          <span class="sidebar-brand-title">Lystaria Docs</span>
+        </div>
+
+        <button
+          type="button"
+          class="sidebar-close"
+          aria-label="Close navigation"
+          data-sidebar-close
+        >
+          ×
+        </button>
+      </div>
+
+      <div class="sidebar-nav">
         {
           groupedDocs.map(([section, docsInSection]) => (
             <div class="nav-group">
               <p class="nav-section">{section}</p>
 
-              <ul>
+              <ul class="nav-list">
                 {docsInSection.map((doc) => {
                   const href = `/docs/${doc.id}`;
                   const isActive = currentPath === href;
@@ -69,7 +93,7 @@ const currentPath = Astro.url.pathname;
                           "nav-link-active": isActive,
                         }}
                       >
-                        {doc.data.title}
+                        <span class="nav-link-text">{doc.data.title}</span>
                       </a>
                     </li>
                   );
@@ -84,6 +108,15 @@ const currentPath = Astro.url.pathname;
     <div class="docs-main">
       <header class="topbar">
         <div class="topbar-inner">
+          <button
+            type="button"
+            class="sidebar-toggle"
+            aria-label="Open navigation"
+            data-sidebar-open
+          >
+            ☰
+          </button>
+
           <span class="topbar-title">{title ?? "Documentation"}</span>
         </div>
       </header>
@@ -93,4 +126,32 @@ const currentPath = Astro.url.pathname;
       </main>
     </div>
   </div>
+
+  <script>
+    const body = document.body;
+    const openBtn = document.querySelector("[data-sidebar-open]");
+    const closeBtn = document.querySelector("[data-sidebar-close]");
+    const backdrop = document.querySelector("[data-sidebar-backdrop]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    const openSidebar = () => {
+      body.classList.add("sidebar-open");
+    };
+
+    const closeSidebar = () => {
+      body.classList.remove("sidebar-open");
+    };
+
+    openBtn?.addEventListener("click", openSidebar);
+    closeBtn?.addEventListener("click", closeSidebar);
+    backdrop?.addEventListener("click", closeSidebar);
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", closeSidebar);
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeSidebar();
+    });
+  </script>
 </BaseLayout>
