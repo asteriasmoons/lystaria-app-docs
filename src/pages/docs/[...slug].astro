@@ -7,7 +7,7 @@ export async function getStaticPaths() {
 
   return docs.map((doc) => ({
     params: {
-      slug: doc.id.split("/"),
+      slug: doc.id,
     },
     props: {
       doc,
