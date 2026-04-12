@@ -644,6 +644,69 @@ body.sidebar-open .docs-backdrop {
   color: inherit;
 }
 
+.nav-anchor-item {
+  list-style: none;
+}
+
+.nav-anchor-details {
+  margin: 0;
+}
+
+.nav-anchor-details summary {
+  list-style: none;
+}
+
+.nav-anchor-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.nav-anchor-summary {
+  justify-content: space-between;
+}
+
+.nav-anchor-chevron {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: transform 0.2s ease;
+}
+
+.nav-anchor-details[open] .nav-anchor-chevron {
+  transform: rotate(0deg);
+}
+
+.nav-anchor-body {
+  margin-top: 0.45rem;
+  padding-left: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.nav-sublink {
+  display: block;
+  padding: 0.5rem 0.85rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.84rem;
+  background: rgba(255, 255, 255, 0.025);
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.nav-sublink:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.92);
+  transform: translateX(2px);
+}
+
+.nav-sublink-active {
+  background: rgba(96, 85, 247, 0.18);
+  color: rgba(255, 255, 255, 0.96);
+}
+
 .docs-main {
   min-width: 0;
 }
