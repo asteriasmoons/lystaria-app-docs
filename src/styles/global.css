@@ -235,7 +235,20 @@ a:hover {
 /* -----------------------------
    IMAGES
 ------------------------------ */
+.docs-image {
+  width: 100%;
+  border-radius: 16px;
+  margin: 0.75rem 0 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
 
+.docs-card {
+  padding: 1.1rem 1.15rem;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.035);
+  margin-bottom: 2rem;
+}
 
 
 /* -----------------------------
