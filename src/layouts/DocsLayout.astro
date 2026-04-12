@@ -74,6 +74,23 @@ const groupedDocs = Object.entries(groupedDocsMap)
       </div>
 
       <div class="sidebar-nav">
+      <div class="nav-group">
+  <p class="nav-section">Overview</p>
+
+  <ul class="nav-list">
+    <li>
+      <a
+        href="/"
+        class:list={{
+          "nav-link": true,
+          "nav-link-active": currentPath === "/",
+        }}
+      >
+        <span class="nav-link-text">Home</span>
+      </a>
+    </li>
+  </ul>
+</div>
         {
           groupedDocs.map(([section, docsInSection]) => (
             <div class="nav-group">
