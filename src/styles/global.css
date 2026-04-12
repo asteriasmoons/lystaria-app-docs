@@ -265,6 +265,16 @@ a:hover {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+@media (max-width: 700px) {
+  .docs-image-row {
+    flex-direction: column;
+  }
+
+  .docs-image-small {
+    max-width: 100%;
+  }
+}
+
 /* -----------------------------
    Containers
 ------------------------------ */
