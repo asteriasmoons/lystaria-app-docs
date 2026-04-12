@@ -362,6 +362,50 @@ a:hover {
 }
 
 /* =========================================================
+   FOOTER - NORMAL
+   ========================================================= */
+.site-footer {
+  margin-top: 3rem;
+  padding: 1.5rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent),
+    rgba(7, 10, 24, 0.4);
+
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.footer-inner {
+  width: min(100%, 980px);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-title {
+  margin: 0 0 0.35rem;
+  font-family: "Lily Script One";
+  font-size: 1.2rem;
+
+  background-image: var(--gradient-heading);
+  background-size: 120% auto;
+  background-position: center;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.footer-subtle {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+   
+
+/* =========================================================
    NAV (Global) -- NORMAL
    ========================================================= */
 
