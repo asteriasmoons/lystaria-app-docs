@@ -599,7 +599,11 @@ body.sidebar-open .docs-backdrop {
 .sidebar-toggle {
   width: 42px;
   height: 42px;
-  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1; /* VERY important */
+  font-size: 1.2rem;
   margin-right: 0.9rem;
   flex-shrink: 0;
 }
