@@ -242,6 +242,14 @@ a:hover {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.docs-image-single {
+  width: min(100%, 520px);
+  margin: 2.5rem auto;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: block;
+}
+
 .docs-card {
   padding: 1.1rem 1.15rem;
   border-radius: 18px;
