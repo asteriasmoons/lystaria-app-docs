@@ -35,19 +35,71 @@ const groupedDocs = Object.entries(groupedDocsMap)
 
     return aIndex - bIndex;
   })
-  .map(
-    ([section, docsInSection]) =>
-      [
-        section,
-        [...docsInSection].sort((a, b) => {
-          const orderA = a.data.order ?? 999;
-          const orderB = b.data.order ?? 999;
+  .map(([section, docsInSection]) => {
+    const sortedDocs = [...docsInSection].sort((a, b) => {
+      const orderA = a.data.order ?? 999;
+      const orderB = b.data.order ?? 999;
 
-          if (orderA !== orderB) return orderA - orderB;
-          return a.data.title.localeCompare(b.data.title);
-        }),
-      ] as const,
-  );
+      if (orderA !== orderB) return orderA - orderB;
+      return a.data.title.localeCompare(b.data.title);
+    });
+
+    const anchors = sortedDocs.filter((doc) => doc.data.isAnchor);
+    const regularDocs = sortedDocs.filter(
+      (doc) => !doc.data.isAnchor && !doc.data.parent,
+    );
+
+    const anchorGroups = anchors.map((anchor) => {
+      const children = sortedDocs.filter(
+        (doc) => doc.data.parent === anchor.id,
+      );
+
+      const anchorHref = `/docs/${anchor.id}`;
+      const anchorActive = currentPath === anchorHref;
+      const childActive = children.some(
+        (child) => currentPath === `/docs/${child.id}`,
+      );
+
+      return {
+        type: "anchor" as const,
+        anchor,
+        anchorHref,
+        isOpen: anchorActive || childActive,
+        isActive: anchorActive,
+        children,
+      };
+    });
+
+    const standaloneDocs = regularDocs.map((doc) => ({
+      type: "standalone" as const,
+      doc,
+      href: `/docs/${doc.id}`,
+      isActive: currentPath === `/docs/${doc.id}`,
+    }));
+
+    return [
+      section,
+      [...anchorGroups, ...standaloneDocs].sort((a, b) => {
+        const orderA =
+          a.type === "anchor"
+            ? (a.anchor.data.order ?? 999)
+            : (a.doc.data.order ?? 999);
+        const orderB =
+          b.type === "anchor"
+            ? (b.anchor.data.order ?? 999)
+            : (b.doc.data.order ?? 999);
+
+        if (orderA !== orderB) return orderA - orderB;
+
+        const titleA =
+          a.type === "anchor" ? a.anchor.data.title : a.doc.data.title;
+        const titleB =
+          b.type === "anchor" ? b.anchor.data.title : b.doc.data.title;
+
+        return titleA.localeCompare(titleB);
+      }),
+    ] as const;
+  });
 ---
 
 <BaseLayout {title} {description}>
@@ -74,43 +126,91 @@ const groupedDocs = Object.entries(groupedDocsMap)
       </div>
 
       <div class="sidebar-nav">
-      <div class="nav-group">
-  <p class="nav-section">Overview</p>
+        <div class="nav-group">
+          <p class="nav-section">Overview</p>
 
-  <ul class="nav-list">
-    <li>
-      <a
-        href="/"
-        class:list={{
-          "nav-link": true,
-          "nav-link-active": currentPath === "/",
-        }}
-      >
-        <span class="nav-link-text">Home</span>
-      </a>
-    </li>
-  </ul>
-</div>
+          <ul class="nav-list">
+            <li>
+              <a
+                href="/"
+                class:list={{
+                  "nav-link": true,
+                  "nav-link-active": currentPath === "/",
+                }}
+              >
+                <span class="nav-link-text">Home</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
         {
-          groupedDocs.map(([section, docsInSection]) => (
+          groupedDocs.map(([section, items]) => (
             <div class="nav-group">
               <p class="nav-section">{section}</p>
 
               <ul class="nav-list">
-                {docsInSection.map((doc) => {
-                  const href = `/docs/${doc.id}`;
-                  const isActive = currentPath === href;
+                {items.map((item) => {
+                  if (item.type === "anchor") {
+                    return (
+                      <li class="nav-anchor-item">
+                        <details class="nav-anchor-details" open={item.isOpen}>
+                          <summary
+                            class:list={{
+                              "nav-link": true,
+                              "nav-link-active": item.isActive,
+                              "nav-anchor-summary": true,
+                            }}
+                          >
+                            <span class="nav-link-text">
+                              {item.anchor.data.title}
+                            </span>
+                            <span class="nav-anchor-chevron">▿</span>
+                          </summary>
+
+                          <div class="nav-anchor-body">
+                            <a
+                              href={item.anchorHref}
+                              class:list={{
+                                "nav-sublink": true,
+                                "nav-sublink-active": item.isActive,
+                              }}
+                            >
+                              Overview
+                            </a>
+
+                            {item.children.map((child) => {
+                              const childHref = `/docs/${child.id}`;
+                              const childActive = currentPath === childHref;
+
+                              return (
+                                <a
+                                  href={childHref}
+                                  class:list={{
+                                    "nav-sublink": true,
+                                    "nav-sublink-active": childActive,
+                                  }}
+                                >
+                                  {child.data.title}
+                                </a>
+                              );
+                            })}
+                          </div>
+                        </details>
+                      </li>
+                    );
+                  }
 
                   return (
                     <li>
                       <a
-                        href={href}
+                        href={item.href}
                         class:list={{
                           "nav-link": true,
-                          "nav-link-active": isActive,
+                          "nav-link-active": item.isActive,
                         }}
                       >
-                        <span class="nav-link-text">{doc.data.title}</span>
+                        <span class="nav-link-text">{item.doc.data.title}</span>
                       </a>
                     </li>
                   );
@@ -149,7 +249,7 @@ const groupedDocs = Object.entries(groupedDocsMap)
     const openBtn = document.querySelector("[data-sidebar-open]");
     const closeBtn = document.querySelector("[data-sidebar-close]");
     const backdrop = document.querySelector("[data-sidebar-backdrop]");
-    const navLinks = document.querySelectorAll(".nav-link");
+    const navLinks = document.querySelectorAll(".nav-link, .nav-sublink");
 
     const openSidebar = () => {
       body.classList.add("sidebar-open");

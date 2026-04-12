@@ -8,6 +8,8 @@ const docs = defineCollection({
     description: z.string().optional(),
     section: z.string().optional(),
     order: z.number().optional(),
+    isAnchor: z.boolean().optional(),
+    parent: z.string().optional(),
   }),
 });
 
