@@ -706,6 +706,8 @@ body.sidebar-open .docs-backdrop {
   align-items: center;
   justify-content: center;
   margin-left: auto;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
 }
 
 .chevron-icon {
@@ -747,10 +749,14 @@ body.sidebar-open .docs-backdrop {
   justify-content: space-between;
 }
 
-.nav-anchor-chevron {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.7);
-  transition: transform 0.2s ease;
+.nav-anchor-summary::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+}
+
+.nav-anchor-summary {
+  position: relative;
 }
 
 .nav-anchor-details[open] .nav-anchor-chevron {
