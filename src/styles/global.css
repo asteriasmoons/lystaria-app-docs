@@ -701,6 +701,32 @@ body.sidebar-open .docs-backdrop {
   color: inherit;
 }
 
+.nav-anchor-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.chevron-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Default (closed) */
+.chevron-down {
+  display: none;
+}
+
+/* When open */
+.nav-anchor-details[open] .chevron-right {
+  display: none;
+}
+
+.nav-anchor-details[open] .chevron-down {
+  display: inline;
+}
+
 .nav-anchor-item {
   list-style: none;
 }

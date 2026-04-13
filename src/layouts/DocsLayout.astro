@@ -165,7 +165,10 @@ const groupedDocs = Object.entries(groupedDocsMap)
                             <span class="nav-link-text">
                               {item.anchor.data.title}
                             </span>
-                            <span class="nav-anchor-chevron">▿</span>
+                            <span class="nav-anchor-chevron">
+  <img src="/img/icons/right.svg" class="chevron-icon chevron-right" />
+  <img src="/img/icons/down.svg" class="chevron-icon chevron-down" />
+</span>
                           </summary>
 
                           <div class="nav-anchor-body">
@@ -247,7 +250,6 @@ const groupedDocs = Object.entries(groupedDocsMap)
       const openBtn = document.querySelector("[data-sidebar-open]");
       const closeBtn = document.querySelector("[data-sidebar-close]");
       const backdrop = document.querySelector("[data-sidebar-backdrop]");
-      const navLinks = document.querySelectorAll(".nav-link, .nav-sublink");
 
       if (!openBtn || !closeBtn || !backdrop) return;
 
@@ -262,10 +264,6 @@ const groupedDocs = Object.entries(groupedDocsMap)
       openBtn.addEventListener("click", openSidebar);
       closeBtn.addEventListener("click", closeSidebar);
       backdrop.addEventListener("click", closeSidebar);
-
-      navLinks.forEach((link) => {
-        link.addEventListener("click", closeSidebar);
-      });
 
       window.addEventListener("keydown", (event) => {
         if (event.key === "Escape") closeSidebar();
