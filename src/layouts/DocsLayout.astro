@@ -9,8 +9,6 @@ interface Props {
 
 const { title, description } = Astro.props;
 
-const openBtn = document.querySelector("[data-sidebar-open]");
-
 const docs = await getCollection("docs");
 const currentPath = Astro.url.pathname;
 
@@ -241,31 +239,43 @@ const groupedDocs = Object.entries(groupedDocsMap)
     </div>
   </div>
 
-  <script>
-    const body = document.body;
-    const openBtn = document.querySelector("[data-sidebar-open]");
-    const closeBtn = document.querySelector("[data-sidebar-close]");
-    const backdrop = document.querySelector("[data-sidebar-backdrop]");
-    const navLinks = document.querySelectorAll(".nav-link, .nav-sublink");
+  <script is:inline>
+  if (typeof document !== "undefined") {
+    const initSidebar = () => {
+      const body = document.body;
+      const openBtn = document.querySelector("[data-sidebar-open]");
+      const closeBtn = document.querySelector("[data-sidebar-close]");
+      const backdrop = document.querySelector("[data-sidebar-backdrop]");
+      const navLinks = document.querySelectorAll(".nav-link, .nav-sublink");
 
-    const openSidebar = () => {
-      body.classList.add("sidebar-open");
+      if (!openBtn || !closeBtn || !backdrop) return;
+
+      const openSidebar = () => {
+        body.classList.add("sidebar-open");
+      };
+
+      const closeSidebar = () => {
+        body.classList.remove("sidebar-open");
+      };
+
+      openBtn.addEventListener("click", openSidebar);
+      closeBtn.addEventListener("click", closeSidebar);
+      backdrop.addEventListener("click", closeSidebar);
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", closeSidebar);
+      });
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeSidebar();
+      });
     };
 
-    const closeSidebar = () => {
-      body.classList.remove("sidebar-open");
-    };
-
-    openBtn?.addEventListener("click", openSidebar);
-    closeBtn?.addEventListener("click", closeSidebar);
-    backdrop?.addEventListener("click", closeSidebar);
-
-    navLinks.forEach((link) => {
-      link.addEventListener("click", closeSidebar);
-    });
-
-    window.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") closeSidebar();
-    });
-  </script>
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initSidebar);
+    } else {
+      initSidebar();
+    }
+  }
+</script>
 </BaseLayout>
