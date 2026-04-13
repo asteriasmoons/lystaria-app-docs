@@ -577,41 +577,57 @@ body.sidebar-open .docs-backdrop {
 
 .sidebar-close,
 .sidebar-toggle {
-  border: none;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(255, 255, 255, 0.06);
-  color: white;
   border-radius: 14px;
+  color: white;
   cursor: pointer;
-  display: inline-grid;
-  place-items: center;
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-}
-
-.sidebar-close {
-  width: 42px;
-  height: 42px;
-  font-size: 1.4rem;
-  line-height: 1;
-}
-
-.sidebar-toggle {
-  width: 42px;
-  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1; /* VERY important */
-  font-size: 1.2rem;
-  margin-right: 0.9rem;
+  line-height: 1;
   flex-shrink: 0;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.sidebar-toggle {
+  margin-right: 0.9rem;
 }
 
 .sidebar-close:hover,
 .sidebar-toggle:hover {
   background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.14);
   transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+}
+
+.sidebar-close:active,
+.sidebar-toggle:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.sidebar-close:focus-visible,
+.sidebar-toggle:focus-visible {
+  outline: none;
+  border-color: rgba(96, 85, 247, 0.5);
+  box-shadow: 0 0 0 3px rgba(96, 85, 247, 0.2);
+}
+
+.sidebar-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+  flex-shrink: 0;
+  pointer-events: none;
 }
 
 .sidebar-nav {

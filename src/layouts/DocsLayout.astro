@@ -116,13 +116,13 @@ const groupedDocs = Object.entries(groupedDocsMap)
         </div>
 
         <button
-          type="button"
-          class="sidebar-close"
-          aria-label="Close navigation"
-          data-sidebar-close
-        >
-          ×
-        </button>
+  type="button"
+  class="sidebar-close"
+  aria-label="Close navigation"
+  data-sidebar-close
+>
+  <img src="/icons/close.svg" alt="Close" class="sidebar-icon" />
+</button>
       </div>
 
       <div class="sidebar-nav">
@@ -225,14 +225,9 @@ const groupedDocs = Object.entries(groupedDocsMap)
     <div class="docs-main">
       <header class="topbar">
         <div class="topbar-inner">
-          <button
-            type="button"
-            class="sidebar-toggle"
-            aria-label="Open navigation"
-            data-sidebar-open
-          >
-            ☰
-          </button>
+          <button class="sidebar-toggle">
+  <img src="/img/icons/menu.svg" alt="Menu" class="sidebar-icon" />
+</button>
 
           <span class="topbar-title">{title ?? "Documentation"}</span>
         </div>
