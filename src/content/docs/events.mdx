@@ -1,0 +1,120 @@
+---
+title: "Events"
+description: "Learn how the Events system works in Lystaria, including event creation, calendars, linked reminders, overview statistics, and the alternate time-based view."
+section: "Core Features"
+order: 2
+isAnchor: true
+---
+import GradientDivider from '../../components/GradientDivider.astro'
+import DotDivider from '../../components/DotDivider.astro'
+
+<div class="docs-card">
+  <h2>Introduction</h2>
+  <p>
+    Events in Lystaria are a different kind of notification and a different kind of structure. They are not meant to behave exactly like reminders, because they are not simply about recurring actions or routine tasks. In this context, events represent your life experiences, your plans, your appointments, your meetings, and the things that happen across time that feel more unique, intentional, and sometimes more special.
+  </p>
+</div>
+
+<div class="docs-card">
+  <p>
+    This makes the Events system feel distinct from the rest of the app in a useful way. Events do not have to repeat daily, and they do not even have to send notifications unless you want them to. They give you a place to hold the things that belong on a calendar, while still allowing them to connect back into the rest of Lystaria when needed.
+  </p>
+</div>
+
+<GradientDivider />
+
+## Opening the Events page
+When you navigate to the Events page, it automatically lands on the current date. This is intentional behavior, and it helps remove unnecessary friction right away. Instead of having to scroll around just to find where you are, the page opens with today already in focus.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/events/dateview1.png" class="docs-image-small"/>
+<img src="/img/screenshots/events/dateview2.png" class="docs-image-small"/>
+</div>
+
+That small choice matters more than it might seem. It makes the Events page feel more immediate and more grounded in the present, which is exactly what you want from something meant to help you organize life experiences across time.
+
+<DotDivider />
+
+## Creating and editing events
+You can create an event by tapping the plus sign on any day. This brings up the event creation page, where you can build the event with as much or as little detail as you need. The creation flow is designed to be flexible enough for both simple events and more layered ones.
+
+From the event creation page, you can choose the day and time, toggle reminders on if you want to be notified, choose repeat options if the event repeats, search for a place if location matters, insert a meeting URL if the event is a meeting, write a description, and choose a custom color for the event card’s color strip. That means events are not limited to just a title and a date. They can carry enough detail to feel complete and meaningful.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/events/new1.png" class="docs-image-small"/>
+<img src="/img/screenshots/events/new2.png" class="docs-image-small"/>
+</div>
+
+The edit page mirrors the creation page, but with everything already filled in. If something was turned on before, it remains turned on. If a field was already filled out, it will already be there waiting for you. This makes editing feel natural and efficient instead of like rebuilding the event from scratch.
+
+<DotDivider />
+
+## Calendars and organization
+The Events system supports calendars, which means your events do not all have to live inside one giant undifferentiated feed. You can create separate calendars and use them to organize your events in a way that makes sense for your life. This gives the system more depth and helps keep different kinds of plans from blending together.
+
+To add a new calendar, you use the white plus icon button in the Events page header. To filter by calendars, you use the lines-in-a-circle icon and choose whether you want to see all events or only events from a specific calendar. This makes it easy to move between a broad overview and a more focused view depending on what you need to see.
+
+The color and name of a calendar are not fixed either. You can edit both of those things in settings, which means calendars remain flexible over time rather than becoming something you are stuck with once created.
+
+<DotDivider />
+
+## Event cards and their details
+Event cards are designed to stay relatively short. They show enough to be useful in the main interface, but they do not try to display everything at once. This keeps the Events page cleaner and easier to scan, especially when you have several events visible at the same time.
+
+Event cards can show badges for the frequency of the event and the calendar the event belongs to. These little bits of information help you understand the event more quickly without needing to open it first. If the event has a linked reminder, the card will also show a small bell icon, giving you another immediate visual cue.
+
+<img src="/img/screenshots/events/popup.png" class="docs-image-single"/>
+
+If you want to see a fuller overview of an event, you can simply tap the card. This opens a popup that gives you more detail without forcing the main event page to become visually overloaded.
+
+<DotDivider />
+
+## Linked reminders for events
+Events can also be linked to reminders. This is one of the features that helps the Events system connect back into the rest of Lystaria instead of feeling isolated from it. If you choose to link a reminder to an event, that reminder will appear in your reminders list and across all three reminder views.
+
+That means events can participate in your broader productivity and planning flow without losing their identity as events. It also means you can "complete" events through the reminder system by marking the linked reminder as done from one of the reminder views. This creates a useful bridge between experiences you want to schedule and actions you want to track.
+
+<DotDivider />
+
+## Event overview statistics
+Inside the event popup, there is another button that opens an overview sheet. This sheet gives you a broader numeric overview of your events and helps you understand how your time and experiences are accumulating. It is designed to show you patterns and totals in a way that feels rewarding and informative.
+
+<img src="/img/screenshots/events/sheet.png" class="docs-image-single"/>
+
+The overview includes numbers for events today, completed today, this week, weekly completed, this month, monthly completed, this year, yearly completed, custom events, and custom completed. It is a full overview, not just a small summary. That makes it especially useful when you want to step back and see not only what is scheduled, but what you have already moved through and accomplished across time.
+
+This can be a surprisingly encouraging feature. Life experiences often pass quickly, and the overview sheet gives you a way to see them reflected back to you in numbers. It helps turn your event history into something more tangible and easier to appreciate.
+
+<DotDivider />
+
+## The alternate time-based view
+The main Events page is not the only way to view your events. There is also a time-based list view, and it is not something a user would necessarily discover without either tapping around or reading this page. To switch into it, go to the top of the Events page and tap the calendar month name.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/events/timeview1.png" class="docs-image-small"/>
+<img src="/img/screenshots/events/timeview2.png" class="docs-image-small"/>
+</div>
+
+That changes the page into the alternate time list view, which shows your scheduled events from 5 AM to 11 PM. This makes it especially fitting for people who prefer events over reminders and like seeing their day structured through time blocking. It gives the Events system another perspective and helps it serve different planning styles.
+
+When you enter this view, it automatically scrolls you down to the current time. That is a very intentional quality-of-life feature, because it helps the page open at the most relevant part of the day instead of forcing you to scroll to find where you are.
+
+<DotDivider />
+
+## Using the time view
+The time-based Events view is not just for looking. You can add, edit, and delete event cards there just as easily as you can from the main Events page. That keeps the alternate view fully useful instead of making it feel like a read-only extra.
+
+Event cards also work the same way in this view. You can tap them to bring up the popup, and inside that popup is the same overview button that opens the same overview sheet with all of your numbers. This consistency is important because it means the alternate view is not a stripped-down version of the feature. It is a real second way to work with the same event system.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/events/switchview1.png" class="docs-image-small"/>
+<img src="/img/screenshots/events/switchview2.png" class="docs-image-small"/>
+</div>
+
+To get back out of the time-based view, you do the same kind of interaction used to enter it. Go to the top of the page and tap the date between the white left and right chevron icons. This returns you to the main Events page and keeps the transition between the two views smooth once you know how it works.
+
+<GradientDivider />
+
+Events in Lystaria are designed to hold the parts of life that feel more like experiences than tasks. They can be simple or detailed, optional in their notifications, linked to reminders when needed, organized by custom calendars, and viewed through both the standard event page and the alternate time-based layout.
+
+Taken together, these features make the Events system feel flexible, thoughtful, and much more than a simple calendar screen. It gives you room to organize your plans, your appointments, your meetings, and your meaningful moments in a way that still feels connected to the rest of the app.
