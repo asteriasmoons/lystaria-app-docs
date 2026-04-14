@@ -1,0 +1,166 @@
+---
+title: "Journal"
+description: "Learn how the Journal system works in Lystaria, including journal books, prompts, streaks, entries, and the block-based editor."
+section: "Core Features"
+order: 3
+isAnchor: true
+---
+import GradientDivider from '../../components/GradientDivider.astro'
+import DotDivider from '../../components/DotDivider.astro'
+
+<div class="docs-card">
+  <h2>Introduction</h2>
+  <p>
+    The Journal feature in Lystaria is more than just a place to write. It is a rich system built around intention, reflection, and expression. While it supports traditional journaling, it is designed to go deeper by giving structure, flexibility, and tools that help you actually engage with what you are writing.
+  </p>
+</div>
+
+<div class="docs-card">
+  <p>
+    This is not just a list of entries on a single page. It is a full journaling environment where you can organize your thoughts into books, track your consistency, generate prompts, and write using a powerful block-based editor. The goal is to make journaling feel natural, personal, and something you actually want to come back to.
+  </p>
+</div>
+
+<GradientDivider />
+
+## Daily Intention
+At the top of the Journal page, you can set a daily intention. This is a simple but powerful feature that helps guide your mindset throughout the day. Your intention automatically clears at midnight, which keeps it fresh and relevant each day.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/journal/view3.png" class="docs-image-single"/>
+<img src="/img/screenshots/journal/view2.png" class="docs-image-single"/>
+</div>
+
+Before midnight, you can edit your intention or clear it entirely if you need to. This flexibility allows you to adjust your focus as your day evolves instead of feeling locked into something you set earlier.
+
+<DotDivider />
+
+## Journal Streaks
+Consistency is an important part of journaling, which is why there is a Journal Streaks card. This card shows both your current streak and your best streak.
+
+<img src="/img/screenshots/journal/view1.png" class="docs-image-single"/>
+
+Your current streak increases each day that you journal, while your best streak reflects the longest streak you have ever maintained. This creates a simple but meaningful way to track your consistency and stay motivated without adding pressure.
+
+<DotDivider />
+
+## Journal Books
+Instead of placing all entries in one long list, Lystaria organizes journaling into books. Each book holds its own entries, allowing you to separate different types of writing in a way that feels intentional.
+
+You can create books for anything, such as thoughts, gratitude, reflection, or anything else you want to focus on. This makes the journaling experience feel more structured without being restrictive.
+
+<img src="/img/screenshots/journal/bookmenu.png" class="docs-image-single"/>
+
+You can also pin your favorite books to the top by long pressing a journal book and using the context menu. From that same menu, you can edit the book’s name and color or delete it entirely. Keep in mind that deleting a journal book will also delete all entries inside of it, so this action should be used carefully.
+
+<img src="/img/screenshots/journal/newbook.png" class="docs-image-single"/>
+
+To create a new journal book, use the floating action plus button at the bottom of the page. You can choose any color and name that fits what you want the book to represent.
+
+<DotDivider />
+
+## Entries Inside a Book
+When you open a journal book, entries are displayed starting with the most recent. The latest entry appears first, and older entries follow in reverse order.
+
+Only four journal cards are shown at a time. If you have more entries, a load more button appears at the bottom, allowing you to reveal additional entries. This keeps the interface clean and prevents overwhelming the screen with too much content at once.
+
+<img src="/img/screenshots/journal/loadmore.png" class="docs-image-single"/>
+
+The load more state resets whenever you leave the journal book and return to it. This ensures the view always starts in a clean, predictable state.
+
+<DotDivider />
+
+## Journal Prompts
+Each journal book has its own prompt system. Inside a book, you will see a bookmark icon button that allows you to add and view your manually created journal prompts.
+
+You can add prompts using the buttons in the prompt popup, which opens a separate input area for writing them. Each prompt includes a hollow circle button to mark it as used and a copy button so you can quickly paste it into a new entry.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/journal/openbook.png" class="docs-image-single"/>
+<img src="/img/screenshots/journal/prompts.png" class="docs-image-single"/>
+</div>
+
+Only four prompts are displayed at a time, with a load more button available if you have additional prompts. Just like entries, this resets when you close and reopen the popup.
+
+Each journal book has its own prompt bank, which means you can create different prompt collections for different types of journaling. This makes the system feel more personalized and purposeful.
+
+<DotDivider />
+
+## Prompt Generator
+If you do not have your own prompts, Lystaria includes a built-in prompt generator. Inside a journal book, you can use the prompt button to generate up to three prompts per day.
+
+<img src="/img/screenshots/journal/generator.png" class="docs-image-single"/>
+
+Each generated prompt includes a copy button, making it easy to paste directly into a new journal entry. This feature helps remove the barrier of not knowing what to write and keeps the journaling process moving.
+
+<DotDivider />
+
+## Entry Overview
+At the top of your journal entries within a book, there is an overview card that shows how many entries you have written for the week and for all time.
+
+This gives you insight into how often you are writing within that specific book. It helps you understand your habits and see your progress over time without needing to track it manually.
+
+<DotDivider />
+
+## Journal Cards
+Journal cards display a preview of your entries so you can quickly scan what you have written. They also show any tags you added to the entry.
+
+When adding tags, you should separate them with commas. Tags make it easier to categorize your entries and quickly identify themes or topics when browsing your journal.
+
+<DotDivider />
+
+### Tag Filtering
+Inside a journal book, you can tap on any tag shown on a journal card to instantly filter the view by that specific tag. This allows you to see all entries that share that tag without needing to search manually or scroll through unrelated entries.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/journal/tags1.png" class="docs-image-single"/>
+<img src="/img/screenshots/journal/tags2.png" class="docs-image-single"/>
+</div>
+
+This makes it much easier to revisit specific themes, thoughts, or topics you have written about before. Instead of your journal feeling like one long stream of entries, tags give you a way to group and access your writing in a more intentional and organized way.
+
+<DotDivider />
+
+## Creating and Editing Entries
+To create a new journal entry, tap the gradient floating plus button at the bottom of the page. This opens the journal editor, which is built as a block-based system.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/journal/new1.png" class="docs-image-single"/>
+<img src="/img/screenshots/journal/new2.png" class="docs-image-single"/>
+</div>
+
+The editor allows you to create entries using different block types such as paragraphs, callouts, code blocks, and dividers. The first block is a paragraph by default, but it can be deleted if it is empty.
+
+To format text, simply select it to reveal formatting options such as bold, italic, underline, and links. This keeps formatting accessible without cluttering the interface.
+
+<DotDivider />
+
+## Divider Styles and Interaction
+The editor includes multiple divider styles, all using the same blue and purple gradient. You can switch between them by tapping on the divider itself.
+
+The available styles include a full dotted line, a short solid line, a full-width solid line, and a thicker three-dot divider. These give you different ways to visually break up your writing.
+
+Dividers can also be moved by long pressing them. This opens a context menu with options to move up, move down, or delete or you can just simply drag the divider to where you want to place it. This allows you to reorganize your entries easily without needing to rewrite anything.
+
+<DotDivider />
+
+## Writing Flow
+Creating new paragraphs is as simple as pressing the enter key. If you want to break up a long block of text later, you can place your cursor at the beginning of a new line and press enter to split it into a new block.
+
+You can also give your entries a title and assign tags. While you can add as many tags as you want, around four is a good balance before the card begins to require horizontal scrolling.
+
+<DotDivider />
+
+## Reading and Moving Entries
+To read a journal entry, tap on its card to open the preview page. This allows you to view your writing in a more focused and readable format.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/journal/preview.png" class="docs-image-single"/>
+<img src="/img/screenshots/journal/movetobook.png" class="docs-image-single"/>
+</div>
+
+You can also move entries between journal books by long pressing a journal card and selecting a different book from the context menu. This makes it easy to reorganize your entries if your structure changes over time.
+
+<GradientDivider />
+
+The Journal system in Lystaria combines intention, structure, and flexibility into one cohesive experience. With daily intentions, streak tracking, customizable books, prompts, a powerful editor, and organized entry management, it gives you everything you need to make journaling a consistent and meaningful part of your life.
