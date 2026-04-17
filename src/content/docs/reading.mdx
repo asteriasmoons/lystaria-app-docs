@@ -1,0 +1,198 @@
+---
+title: "Reading"
+description: "Explore Lystaria’s reading system with books, streaks, goals, sessions, notes, and personalized recommendations."
+section: "Core Features"
+order: 4
+isAnchor: true
+---
+import GradientDivider from '../../components/GradientDivider.astro'
+import DotDivider from '../../components/DotDivider.astro'
+
+<div class="docs-card">
+  <h2>Introduction</h2>
+  <p>
+    Reading is not just a hobby. For many people, it becomes a lifestyle. It shapes how you think, how you imagine, and how you understand the world around you. The Reading system in Lystaria is built around that idea, treating reading as something you actively live with, not something you occasionally check off.
+  </p>
+</div>
+
+<div class="docs-card">
+  <p>
+    From ancient oral storytelling to written manuscripts and modern books, literature has always been a way for people to pass down ideas, emotions, and experiences across time. Reading connects you to those layers of history while also giving you space to grow personally. Lystaria brings structure to that experience, helping you track, reflect, and stay consistent in a way that feels natural.
+  </p>
+</div>
+
+<GradientDivider />
+
+## Why reading matters
+Reading strengthens focus, builds imagination, and expands perspective. It allows you to step into different lives, different worlds, and different ways of thinking. Over time, it becomes less about finishing books and more about the experience of learning, feeling, and growing through them.
+
+The Reading system is designed to support that experience rather than reduce it to simple tracking. It gives you tools to stay consistent, measure progress, and organize your reading journey in a way that feels personal.
+
+<DotDivider />
+
+## Reading streaks
+The Reading Streaks card helps you stay consistent. Each day that you read, you can tap the check-in button to maintain your streak.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/reading/view1.png" class="docs-image-single"/>
+<img src="/img/screenshots/reading/view2.png" class="docs-image-single"/>
+</div>
+
+The card shows both your current streak and your best streak, giving you a clear view of your consistency over time. If you ever want to start fresh, there is also a reset button available. This allows you to redefine your progress without feeling locked into past data.
+
+<DotDivider />
+
+## Reading points
+Reading sessions earn you points through the reading timer. The system rewards consistency by giving you points based on how long you read.
+
+The Reading Points card shows both your total points and the total number of minutes you have spent reading. Over time, this creates a measurable reflection of your effort and consistency.
+
+<DotDivider />
+
+## Reading goals
+The Reading Goal card allows you to set structured goals for your reading habits. You can choose a period such as daily, weekly, monthly, or yearly, and then choose a metric such as minutes, hours, pages, or books.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/reading/goalprogress.png" class="docs-image-single"/>
+<img src="/img/screenshots/reading/monthly.png" class="docs-image-single"/>
+</div>
+
+After setting your target, the card visually represents your progress using small gradient pills that form an arc. Inside the arc, your goal is displayed, giving you a quick understanding of how close you are to reaching it.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/reading/yearly.png" class="docs-image-single"/>
+<img src="/img/screenshots/reading/goalhistory.png" class="docs-image-single"/>
+</div>
+
+Tapping the card opens a more detailed view. Daily and weekly goals show a seven-day layout along with a history of completion. Monthly goals adjust to the number of days in the month and track whether you met your goal for that period. Yearly goals show twelve indicators, one for each month, filling as you complete books and logging whether your yearly goal was achieved.
+
+Goals can be edited at any time, allowing your system to evolve with you.
+
+<DotDivider />
+
+## Book filters
+Books are organized through reading status filters. These include:
+
+- All
+- Reading  
+- TBR (to be read)  
+- Finished  
+- DNF (did not finish)  
+- Paused  
+
+Each filter shows only the books that match that state. You can also long press any filter tab to set it as your default view, so the page always opens to the category you care about most.
+
+<img src="/img/screenshots/reading/tabset.png" class="docs-image-single"/>
+
+Each filter displays up to four book cards at a time. If you have more books, a gradient load more button allows you to reveal additional entries without overwhelming the interface.
+
+<DotDivider />
+
+## Book cards
+Book cards are the core of the reading system. You can create them using the floating plus button and customize them with a title, summary, reading status, start and end dates, tags, and optional series information.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/reading/addbook1.png" class="docs-image-single"/>
+<img src="/img/screenshots/reading/addbook2.png" class="docs-image-single"/>
+</div>
+
+If a book is marked as currently reading, you can track your progress using page numbers. The card will display a progress bar based on your current position in the book.
+
+Each card includes controls for editing, viewing details, logging sessions, and deleting. For active books, you can increment or decrement your current page and mark the book as finished, which automatically sets the end date.
+
+You can also rate books directly from the card by tapping the stars, allowing you to reflect your experience as you go.
+
+<DotDivider />
+
+## Manually logging a session
+Not every reading session will happen with the reading timer running, and the system is designed with that in mind. The **Log Session** button on each book card allows you to manually record your reading progress at any time, so you never lose track of what you’ve done just because it wasn’t tracked live.
+
+This includes your starting page, your ending page, the number of pages you read, and the amount of time you spent reading. Once saved, this session is treated the same as any other session and becomes part of that book’s session history.
+
+<img src="/img/screenshots/reading/logsession.png" class="docs-image-single"/>
+
+Manually logged sessions directly affect your progress. Your current page will update based on the ending page you enter, and your overall progress bar will adjust accordingly. This means your book always reflects your most recent position, even if you skipped the timer entirely.
+
+Long pressing a session allows you to delete it. However, because sessions directly affect your recorded progress, removing one will revert your current page to the last valid session before it.
+
+<DotDivider />
+
+## Book details
+When you open a book’s details view, you are taken into a much more complete representation of that book. This is where everything comes together in one place.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/reading/details1.png" class="docs-image-single"/>
+<img src="/img/screenshots/reading/details2.png" class="docs-image-single"/>
+</div>
+
+You will see the book title, summary, rating, tags, reading status, and your progress displayed clearly. If you uploaded a cover image, it will appear here as well. You will also see your start and end dates, and if the book is part of a series, it will show which series it belongs to and what position it holds within that series.
+
+This view acts as a central hub for that book. Instead of spreading features across multiple places, everything related to that book is accessible here through dedicated buttons.
+
+<DotDivider />
+
+## Reading session history
+Inside the book details view, you can access your session history. This shows every reading session you have logged for that specific book.
+
+<img src="/img/screenshots/reading/sessionhistory.png" class="docs-image-single"/>
+
+Each session displays your starting page, ending page, total pages read, and time spent reading. This creates a detailed timeline of how you progressed through the book instead of just showing the final result.
+
+You can also manage this history directly. By long pressing a session entry, you can delete it. Keep in mind that doing this will affect your current page, as it will revert to the last recorded position from a previous session.
+
+<DotDivider />
+
+## Book notes
+Also within the book details view is your notes section. Book notes are intentionally unstructured, giving you a simple text field to write whatever you want without constraints.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/reading/notes2.png" class="docs-image-single"/>
+<img src="/img/screenshots/reading/notes3.png" class="docs-image-single"/>
+</div>
+
+Notes are organized by the date they were created. Each note appears as a date card, and tapping it allows you to view, edit, or delete that entry. This makes it easy to revisit your thoughts as they were written, instead of forcing them into a rigid format.
+
+<DotDivider />
+
+## Points breakdown
+The points view shows how many points you have earned through reading sessions for that specific book.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/reading/points.png" class="docs-image-single"/>
+<img src="/img/screenshots/reading/timer.png" class="docs-image-single"/>
+</div>
+
+The system is simple: one minute of reading equals one point. This means your points directly reflect the time you have invested. If you read for ten minutes, you earn ten points. If you later read for fifteen more minutes, your total increases accordingly.
+
+This creates a clear and honest relationship between effort and progress, reinforcing consistency over time.
+
+<DotDivider />
+
+## Series tracking
+If a book belongs to a series, the series view allows you to see all books within that series and how they are ordered.
+
+<img src="/img/screenshots/reading/seriesview.png" class="docs-image-small"/>
+
+The order is based on the position you assign when creating or editing the book. This makes it easier to understand where you are within a series and what comes next, especially for longer collections.
+
+<DotDivider />
+
+## Summary generator
+The summary generator allows you to generate book summaries on demand. You provide a book title and optionally an author, and the system creates a summary for you.
+
+<img src="/img/screenshots/reading/summary.png" class="docs-image-single"/>
+
+You can generate multiple summaries, but generating too many in rapid succession may fail due to API limits. Once a summary is generated, you can copy it instantly using the copy button, and a small confirmation banner will appear.
+
+<DotDivider />
+
+## Book recommendations
+The book recommendations feature helps guide your reading journey by suggesting books based on your selected genres.
+
+<img src="/img/screenshots/reading/recommend.png" class="docs-image-single"/>
+
+This allows the system to move beyond tracking what you are already reading and into helping you discover what to read next. By filtering recommendations, you can shape the results to match your interests and reading goals.
+
+<GradientDivider />
+
+The Reading system in Lystaria is designed to support reading as a lifestyle. With streaks, goals, tracking, notes, and discovery tools, it creates a complete environment for engaging with books in a consistent and meaningful way. Over time, it becomes not just a record of what you have read, but a reflection of how you grow through it.
