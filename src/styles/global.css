@@ -897,6 +897,7 @@ summary {
   font-weight: 600;
   color: white;
   position: relative;
+  font-family: "Lily Script One";
   list-style: none;
   background: var(--overlay-gradient-accent);
   transition: all 0.25s ease;
