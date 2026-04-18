@@ -242,19 +242,6 @@ a:hover {
   border: none;
 }
 
-/* .docs-image-single {
-  display: block !important;
-  max-width: 520px !important;
-  width: 100%;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  margin-top: 2.75rem !important;
-  margin-bottom: 2.75rem !important;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-} */
-
 .docs-image-single {
   display: block;
   margin: 1.5rem auto;
@@ -962,6 +949,48 @@ details > *:not(summary) {
 
 details[open] {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================
+   LIST ITEMS
+========================= */
+details > *:not(summary) ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+details > *:not(summary) li {
+  position: relative;
+  padding-left: 1.35rem;
+  margin-bottom: 0.55rem;
+}
+
+details > *:not(summary) li:last-child {
+  margin-bottom: 0;
+}
+
+details > *:not(summary) li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #6055f7 0%,
+    #6055f7 45%,
+    #03e3fc 55%,
+    #03e3fc 100%
+  );
+
+  transform: translateY(-50%);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 2px 6px rgba(3, 227, 252, 0.22);
 }
 
 /* =========================
