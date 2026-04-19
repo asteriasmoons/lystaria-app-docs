@@ -11,109 +11,103 @@ import DotDivider from '../../components/DotDivider.astro'
 <div class="docs-card">
   <h2>Introduction</h2>
   <p>
-    The Reminders system is one of the most important parts of Lystaria. It is designed to help you keep up with time-sensitive actions, repeating routines, medications, and other responsibilities without forcing everything into one rigid format. Instead, it gives you multiple ways to structure reminders so the system can support the way your life actually works.
+    The Reminders system is one of the most important parts of Lystaria. It helps you keep up with time-sensitive actions, repeating routines, medications, and other responsibilities without forcing everything into one rigid format. Instead, it offers multiple ways to structure reminders so the system can support how your life actually works.
   </p>
-
-  <DotDivider />
-
   <p>
-    Reminders in Lystaria are not limited to a single page or a single kind of task. They connect with other parts of the app, support multiple time patterns, and appear across several views so you can interact with them in the way that feels most natural to you. Whether you need one-time reminders, structured routine reminders, or repeating reminders tied to habits and events, this system is built to be flexible, detailed, and practical.
+    Reminders are not limited to a single page or type of task. They connect with other parts of the app, support different time patterns, and appear across multiple views so you can interact with them in the way that feels most natural. Whether you need one-time reminders, structured routines, or repeating reminders tied to habits and events, the system is designed to stay flexible, detailed, and practical.
   </p>
 </div>
 
+<details>
+  <summary>Table Of Contents</summary>
+  <ul>
+    <li>Overview Card</li>
+    <li>Multiple Reminder Types</li>
+    <li>Flexible Scheduling Options</li>
+    <li>Multiple Fire Times</li>
+    <li>Card Bagdes and Statuses</li>
+    <li>Linked Reminder Kinds</li>
+    <li>Completion Behavior</li>
+    <li>Rescheduling and Structure</li>
+    <li>Custom Snoozing</li>
+    <li>Creating and Editing Reminders</li>
+    <li>Other Views and Pages</li>
+    <li>Reminder Detail Popup</li>
+  </ul>
+</details>
+
 <GradientDivider />
 
-## Features of Reminders
-### Reminder overview card
+## Overview Card
 A great feature of the Reminders system is the Overview card at the top of the screen when you open the Reminders tab. It gives you a quick snapshot of what you have already accomplished for the day, what is still coming up, and how many reminders you have in total. This makes it much easier to understand your day at a glance instead of having to mentally count everything yourself.
-
-<DotDivider />
 
 The Overview card is especially helpful because it gives context to the rest of your reminder list. If the total for the day is 21 reminders and your completed section shows 16, then seeing 5 or 6 upcoming reminders immediately makes sense in relation to the day as a whole. That kind of visibility helps you trust the system more because you are not just seeing isolated numbers, but a fuller picture of how your day is unfolding.
 
-<DotDivider />
-
 This can also help you reshape your time around what matters most to you. When you can clearly see what has already taken your energy and what is still ahead, it becomes easier to make decisions about pacing, priorities, and what you realistically have room for. Instead of feeling buried in reminders, you get a better sense of where your energy is going and how the rest of your day is structured.
 
-<GradientDivider />
+<DotDivider />
 
-### Multiple reminder types
+## Multiple Reminder Types
 Lystaria supports different kinds of reminders depending on what you need. You can create normal reminders for general tasks, routine reminders for actions that need a checklist structure, and medication reminders if you are also using the Medication Manager. This allows the reminder system to support ordinary responsibilities as well as more specialized forms of care.
 
 <img src="/img/screenshots/reminders/view.png" class="docs-image-single"/>
 
 A normal reminder is exactly what it sounds like. It includes a title, description, optional checklist items, a date and time, and a chosen frequency. This makes it useful for everyday tasks that need structure without requiring extra complexity.
 
-<DotDivider />
-
 A routine reminder is more structured. It requires checklist items, and in order to mark the reminder complete, all checklist items must be checked off first. This makes routine reminders especially useful for multi-step processes where full completion matters more than simply tapping one button.
 
-<GradientDivider />
-
-### Flexible scheduling options
-The Reminders system supports many different time types, which gives you a lot of freedom in how you build your schedule. You can create reminders that repeat every x days, every x weeks, every x months, or every x years. There is also an interval-based time type for reminders that need a repeating cadence outside of the more standard calendar patterns.
-
 <DotDivider />
+
+## Flexible Scheduling Options
+The Reminders system supports many different time types, which gives you a lot of freedom in how you build your schedule. You can create reminders that repeat every x days, every x weeks, every x months, or every x years. There is also an interval-based time type for reminders that need a repeating cadence outside of the more standard calendar patterns.
 
 Monthly and yearly reminders also support additional customization, which makes them more useful for tasks that need a little more precision. This means the system is not limited to simple daily repeats, but can support schedules that reflect more realistic routines and longer-term responsibilities. The goal is to give you enough control that reminders feel adaptable rather than restrictive.
 
-<GradientDivider />
-
-### Multiple fire times for one reminder
-One reminder can support multiple fire times. This is especially useful for things that happen more than once in a day but still belong to the same responsibility. For example, if you take medicine twice daily, you could create one reminder called **Medicine** and set it to fire at 10 AM and again at 10 PM.
-
 <DotDivider />
+
+## Multiple Fire Times
+One reminder can support multiple fire times. This is especially useful for things that happen more than once in a day but still belong to the same responsibility. For example, if you take medicine twice daily, you could create one reminder called **Medicine** and set it to fire at 10 AM and again at 10 PM.
 
 This helps reduce clutter because you do not need to create separate reminder objects for every occurrence. Instead, one reminder can represent one responsibility while still notifying you at more than one time. That makes the system cleaner and easier to maintain.
 
-<GradientDivider />
-
-### Reminder card badges and statuses
-Reminder cards include multiple badge types so you can understand what you are looking at quickly. Cards can show badges for reminder frequency, reminder type, and timing status. This gives each card more context without requiring you to open it first.
-
 <DotDivider />
+
+## Card Badges and Statuses
+Reminder cards include multiple badge types so you can understand what you are looking at quickly. Cards can show badges for reminder frequency, reminder type, and timing status. This gives each card more context without requiring you to open it first.
 
 The timing status badges include **Due Now**, **Upcoming**, and **Overdue**. These badges help you immediately understand whether something needs attention right away, is coming soon, or has already passed its scheduled time. This makes scanning the reminder list much easier, especially when you are working with a lot of reminders at once.
 
-<GradientDivider />
-
-### Connected reminders from other systems
-Habits and events also support reminders, and those linked reminders will appear in the main reminder card list as well. This is important because it means the Reminders system is not isolated from the rest of the app. Instead, it acts more like a connected layer that helps bring different time-based responsibilities into one place.
-
 <DotDivider />
+
+## Linked Reminder Kinds
+Habits and events also support reminders, and those linked reminders will appear in the main reminder card list as well. This is important because it means the Reminders system is not isolated from the rest of the app. Instead, it acts more like a connected layer that helps bring different time-based responsibilities into one place.
 
 Those linked reminders can also be completed from multiple views. You can complete them from the standard reminder cards list page, the Time Blocking page, or Kanban View. This gives you more flexibility in how you interact with your schedule and prevents the system from forcing you into one single workflow.
 
-<GradientDivider />
-
-### Completion behavior
-Whenever you complete a reminder, a gradient banner appears to confirm that it has been completed. This banner also shows the next run time and date, which helps you immediately understand what happens next. It is a small detail, but it makes the reminder system feel much clearer and more responsive.
-
 <DotDivider />
+
+## Completion Behavior
+Whenever you complete a reminder, a gradient banner appears to confirm that it has been completed. This banner also shows the next run time and date, which helps you immediately understand what happens next. It is a small detail, but it makes the reminder system feel much clearer and more responsive.
 
 The done button behaves differently depending on whether a reminder is one-time or recurring. If a reminder is recurring, the done button does not stay permanently filled, because that reminder will need to be completed again on its next occurrence. Only one-time reminders keep that completed state in a more permanent way, which makes sense because they do not need to return.
 
-<GradientDivider />
-
-### Reschedule without breaking the original schedule
-If you set a reminder for a specific day and time, and that day arrives but you need to move it without ruining the schedule you originally built, you can use the **Reschedule** button. This allows you to push the reminder back by date and time while still preserving the original schedule pattern you set for it.
-
 <DotDivider />
+
+## Rescheduling and Structure
+If you set a reminder for a specific day and time, and that day arrives but you need to move it without ruining the schedule you originally built, you can use the **Reschedule** button. This allows you to push the reminder back by date and time while still preserving the original schedule pattern you set for it.
 
 This is especially helpful when life gets in the way and you need flexibility without having to rebuild the reminder itself. Instead of editing the schedule and accidentally changing the long-term pattern, you can simply move the current occurrence. That makes the system much more forgiving.
 
-<GradientDivider />
-
-### Custom snoozing
-If you only need to delay a reminder for a short amount of time, you can use the **Snooze** button. This lets you enter a custom snooze time so the reminder is pushed back temporarily. It is useful when you know you still want to do the task, but not at the exact moment it appears.
-
 <DotDivider />
+
+## Custom Snoozing
+If you only need to delay a reminder for a short amount of time, you can use the **Snooze** button. This lets you enter a custom snooze time so the reminder is pushed back temporarily. It is useful when you know you still want to do the task, but not at the exact moment it appears.
 
 This keeps the reminder active while giving you breathing room. Rather than dismissing it or changing its actual structure, snoozing gives you a quick way to adjust the timing of the current moment. That makes it ideal for interruptions, delays, or times when you need a little flexibility.
 
-<GradientDivider />
+<DotDivider />
 
-### Creating and editing reminders
+## Creating and Editing Reminders
 You can add reminders using the large floating plus button. This makes creating a new reminder quick and easy from the main reminders area. Once a reminder exists, you can edit it using the edit button on the reminder card.
 
 <div class="docs-image-row">
@@ -123,9 +117,9 @@ You can add reminders using the large floating plus button. This makes creating 
 
 This setup keeps the creation and editing flow straightforward. New reminders are always easy to start, while existing reminders remain easy to refine. That balance is important because reminders often need to evolve as routines change.
 
-<GradientDivider />
+<DotDivider />
 
-### Other reminder views and pages
+## Other Views and Pages
 The Reminders system includes header icon buttons that help you move to other related views and pages. These are important because reminders are not meant to live only in one flat list. Different views help you interact with the same reminder data in different ways depending on what kind of planning or visibility you need.
 
 <div class="docs-image-row">
@@ -135,9 +129,9 @@ The Reminders system includes header icon buttons that help you move to other re
 
 This is also why Reminders works especially well as an anchor section in the docs. The overview page explains the system as a whole, while the sub-pages can go deeper into views like Time Blocking, Steps Tracker, Water Tracker, and Kanban View. Together, those pages give you a fuller understanding of how the entire reminder experience is designed to work.
 
-<GradientDivider />
+<DotDivider />
 
-### Reminder detail popup
+## Reminder Detail Popup
 When you tap on a reminder card in the main reminders view, a detailed popup will appear. This popup gives you a more complete look at the reminder without cluttering the main list view. Instead of forcing all information onto the card itself, the system keeps cards clean and readable while still allowing you to access everything when you need it.
 
 <img src="/img/screenshots/reminders/rrpopup.png" class="docs-image-single"/>
@@ -147,7 +141,5 @@ Inside this popup, you can view the full details of the reminder, including its 
 <GradientDivider />
 
 Reminders in Lystaria are much more than a basic alert system. They support multiple reminder types, flexible schedules, recurring logic, checklist-based routines, linked habits and events, multiple fire times, and several different ways to interact with the same data. The result is a reminder system that is structured, forgiving, and detailed enough to support real daily life.
-
-<DotDivider />
 
 If you want to understand Reminders fully, the best next step is to explore the sub-pages for the connected views and tools that belong to this section.
