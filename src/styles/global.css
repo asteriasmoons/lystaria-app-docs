@@ -622,6 +622,20 @@ body.sidebar-open .docs-backdrop {
   padding: 1rem 0.75rem 1.25rem;
 }
 
+.sidebar-drawer {
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.sidebar-drawer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-drawer::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #6055f7, #03e3fc);
+  border-radius: 10px;
+}
+
 .nav-group + .nav-group {
   margin-top: 1.25rem;
 }
