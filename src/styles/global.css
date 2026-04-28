@@ -798,6 +798,18 @@ body.sidebar-open .docs-backdrop {
   color: rgba(255, 255, 255, 0.96);
 }
 
+.nav-nested-anchor-details {
+  margin-top: 0.25rem;
+}
+
+.nav-nested-summary {
+  width: 100%;
+}
+
+.nav-nested-anchor-body {
+  padding-left: 0.85rem;
+}
+
 .docs-main {
   min-width: 0;
 }
