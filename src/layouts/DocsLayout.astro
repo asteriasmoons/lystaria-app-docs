@@ -14,6 +14,55 @@ const currentPath = Astro.url.pathname;
 
 const sectionOrder = ["Getting Started", "Core Features", "Other"];
 
+type DocEntry = (typeof docs)[number];
+
+type NavNode = {
+  doc: DocEntry;
+  href: string;
+  isAnchor: boolean;
+  isActive: boolean;
+  isOpen: boolean;
+  children: NavNode[];
+};
+
+const getHref = (doc: DocEntry) => `/docs/${doc.id}`;
+
+const isDocActive = (doc: DocEntry) => currentPath === getHref(doc);
+
+const sortDocs = (items: DocEntry[]) =>
+  [...items].sort((a, b) => {
+    const orderA = a.data.order ?? 999;
+    const orderB = b.data.order ?? 999;
+
+    if (orderA !== orderB) return orderA - orderB;
+    return a.data.title.localeCompare(b.data.title);
+  });
+
+const buildTree = (items: DocEntry[], parent?: string): NavNode[] => {
+  const children = sortDocs(
+    items.filter((doc) =>
+      parent ? doc.data.parent === parent : !doc.data.parent,
+    ),
+  );
+
+  return children.map((doc) => {
+    const nestedChildren = buildTree(items, doc.id);
+    const active = isDocActive(doc);
+    const childActive = nestedChildren.some(
+      (child) => child.isActive || child.isOpen,
+    );
+
+    return {
+      doc,
+      href: getHref(doc),
+      isAnchor: Boolean(doc.data.isAnchor),
+      isActive: active,
+      isOpen: active || childActive,
+      children: nestedChildren,
+    };
+  });
+};
+
 const groupedDocsMap = docs.reduce(
   (acc, doc) => {
     const section = doc.data.section ?? "Other";
@@ -36,69 +85,7 @@ const groupedDocs = Object.entries(groupedDocsMap)
     return aIndex - bIndex;
   })
   .map(([section, docsInSection]) => {
-    const sortedDocs = [...docsInSection].sort((a, b) => {
-      const orderA = a.data.order ?? 999;
-      const orderB = b.data.order ?? 999;
-
-      if (orderA !== orderB) return orderA - orderB;
-      return a.data.title.localeCompare(b.data.title);
-    });
-
-    const anchors = sortedDocs.filter((doc) => doc.data.isAnchor);
-    const regularDocs = sortedDocs.filter(
-      (doc) => !doc.data.isAnchor && !doc.data.parent,
-    );
-
-    const anchorGroups = anchors.map((anchor) => {
-      const children = sortedDocs.filter(
-        (doc) => doc.data.parent === anchor.id,
-      );
-
-      const anchorHref = `/docs/${anchor.id}`;
-      const anchorActive = currentPath === anchorHref;
-      const childActive = children.some(
-        (child) => currentPath === `/docs/${child.id}`,
-      );
-
-      return {
-        type: "anchor" as const,
-        anchor,
-        anchorHref,
-        isOpen: anchorActive || childActive,
-        isActive: anchorActive,
-        children,
-      };
-    });
-
-    const standaloneDocs = regularDocs.map((doc) => ({
-      type: "standalone" as const,
-      doc,
-      href: `/docs/${doc.id}`,
-      isActive: currentPath === `/docs/${doc.id}`,
-    }));
-
-    return [
-      section,
-      [...anchorGroups, ...standaloneDocs].sort((a, b) => {
-        const orderA =
-          a.type === "anchor"
-            ? (a.anchor.data.order ?? 999)
-            : (a.doc.data.order ?? 999);
-        const orderB =
-          b.type === "anchor"
-            ? (b.anchor.data.order ?? 999)
-            : (b.doc.data.order ?? 999);
-
-        if (orderA !== orderB) return orderA - orderB;
-
-        const titleA =
-          a.type === "anchor" ? a.anchor.data.title : a.doc.data.title;
-        const titleB =
-          b.type === "anchor" ? b.anchor.data.title : b.doc.data.title;
-
-        return titleA.localeCompare(titleB);
-      }),
-    ] as const;
+    return [section, buildTree(docsInSection)] as const;
   });
 ---
 
@@ -116,13 +103,13 @@ const groupedDocs = Object.entries(groupedDocsMap)
         </div>
 
         <button
-  type="button"
-  class="sidebar-close"
-  aria-label="Close navigation"
-  data-sidebar-close
->
-  <img src="/img/icons/close.svg" alt="Close" class="sidebar-icon" />
-</button>
+          type="button"
+          class="sidebar-close"
+          aria-label="Close navigation"
+          data-sidebar-close
+        >
+          <img src="/img/icons/close.svg" alt="Close" class="sidebar-icon" />
+        </button>
       </div>
 
       <div class="sidebar-nav">
@@ -151,7 +138,7 @@ const groupedDocs = Object.entries(groupedDocsMap)
 
               <ul class="nav-list">
                 {items.map((item) => {
-                  if (item.type === "anchor") {
+                  if (item.isAnchor) {
                     return (
                       <li class="nav-anchor-item">
                         <details class="nav-anchor-details" open={item.isOpen}>
@@ -163,17 +150,26 @@ const groupedDocs = Object.entries(groupedDocsMap)
                             }}
                           >
                             <span class="nav-link-text">
-                              {item.anchor.data.title}
+                              {item.doc.data.title}
                             </span>
+
                             <span class="nav-anchor-chevron">
-  <img src="/img/icons/right.svg" class="chevron-icon chevron-right" />
-  <img src="/img/icons/down.svg" class="chevron-icon chevron-down" />
-</span>
+                              <img
+                                src="/img/icons/right.svg"
+                                class="chevron-icon chevron-right"
+                                alt=""
+                              />
+                              <img
+                                src="/img/icons/down.svg"
+                                class="chevron-icon chevron-down"
+                                alt=""
+                              />
+                            </span>
                           </summary>
 
                           <div class="nav-anchor-body">
                             <a
-                              href={item.anchorHref}
+                              href={item.href}
                               class:list={{
                                 "nav-sublink": true,
                                 "nav-sublink-active": item.isActive,
@@ -183,18 +179,75 @@ const groupedDocs = Object.entries(groupedDocsMap)
                             </a>
 
                             {item.children.map((child) => {
-                              const childHref = `/docs/${child.id}`;
-                              const childActive = currentPath === childHref;
+                              if (child.isAnchor) {
+                                return (
+                                  <details
+                                    class="nav-anchor-details nav-nested-anchor-details"
+                                    open={child.isOpen}
+                                  >
+                                    <summary
+                                      class:list={{
+                                        "nav-sublink": true,
+                                        "nav-sublink-active": child.isActive,
+                                        "nav-anchor-summary": true,
+                                        "nav-nested-summary": true,
+                                      }}
+                                    >
+                                      <span class="nav-link-text">
+                                        {child.doc.data.title}
+                                      </span>
+
+                                      <span class="nav-anchor-chevron">
+                                        <img
+                                          src="/img/icons/right.svg"
+                                          class="chevron-icon chevron-right"
+                                          alt=""
+                                        />
+                                        <img
+                                          src="/img/icons/down.svg"
+                                          class="chevron-icon chevron-down"
+                                          alt=""
+                                        />
+                                      </span>
+                                    </summary>
+
+                                    <div class="nav-anchor-body nav-nested-anchor-body">
+                                      <a
+                                        href={child.href}
+                                        class:list={{
+                                          "nav-sublink": true,
+                                          "nav-sublink-active": child.isActive,
+                                        }}
+                                      >
+                                        Overview
+                                      </a>
+
+                                      {child.children.map((grandchild) => (
+                                        <a
+                                          href={grandchild.href}
+                                          class:list={{
+                                            "nav-sublink": true,
+                                            "nav-sublink-active":
+                                              grandchild.isActive,
+                                          }}
+                                        >
+                                          {grandchild.doc.data.title}
+                                        </a>
+                                      ))}
+                                    </div>
+                                  </details>
+                                );
+                              }
 
                               return (
                                 <a
-                                  href={childHref}
+                                  href={child.href}
                                   class:list={{
                                     "nav-sublink": true,
-                                    "nav-sublink-active": childActive,
+                                    "nav-sublink-active": child.isActive,
                                   }}
                                 >
-                                  {child.data.title}
+                                  {child.doc.data.title}
                                 </a>
                               );
                             })}
@@ -228,10 +281,14 @@ const groupedDocs = Object.entries(groupedDocsMap)
     <div class="docs-main">
       <header class="topbar">
         <div class="topbar-inner">
-          <button class="sidebar-toggle" data-sidebar-open>
-  <img src="/img/icons/menu.svg" alt="Menu" class="sidebar-icon" />
-</button>
-
+          <button
+            type="button"
+            class="sidebar-toggle"
+            aria-label="Open navigation"
+            data-sidebar-open
+          >
+            <img src="/img/icons/menu.svg" alt="Menu" class="sidebar-icon" />
+          </button>
 
           <span class="topbar-title">{title ?? "Documentation"}</span>
         </div>
@@ -244,37 +301,37 @@ const groupedDocs = Object.entries(groupedDocsMap)
   </div>
 
   <script is:inline>
-  if (typeof document !== "undefined") {
-    const initSidebar = () => {
-      const body = document.body;
-      const openBtn = document.querySelector("[data-sidebar-open]");
-      const closeBtn = document.querySelector("[data-sidebar-close]");
-      const backdrop = document.querySelector("[data-sidebar-backdrop]");
+    if (typeof document !== "undefined") {
+      const initSidebar = () => {
+        const body = document.body;
+        const openBtn = document.querySelector("[data-sidebar-open]");
+        const closeBtn = document.querySelector("[data-sidebar-close]");
+        const backdrop = document.querySelector("[data-sidebar-backdrop]");
 
-      if (!openBtn || !closeBtn || !backdrop) return;
+        if (!openBtn || !closeBtn || !backdrop) return;
 
-      const openSidebar = () => {
-        body.classList.add("sidebar-open");
+        const openSidebar = () => {
+          body.classList.add("sidebar-open");
+        };
+
+        const closeSidebar = () => {
+          body.classList.remove("sidebar-open");
+        };
+
+        openBtn.addEventListener("click", openSidebar);
+        closeBtn.addEventListener("click", closeSidebar);
+        backdrop.addEventListener("click", closeSidebar);
+
+        window.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") closeSidebar();
+        });
       };
 
-      const closeSidebar = () => {
-        body.classList.remove("sidebar-open");
-      };
-
-      openBtn.addEventListener("click", openSidebar);
-      closeBtn.addEventListener("click", closeSidebar);
-      backdrop.addEventListener("click", closeSidebar);
-
-      window.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") closeSidebar();
-      });
-    };
-
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initSidebar);
-    } else {
-      initSidebar();
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initSidebar);
+      } else {
+        initSidebar();
+      }
     }
-  }
-</script>
+  </script>
 </BaseLayout>
