@@ -1,0 +1,120 @@
+---
+title: "Health"
+description: "Track your physical and mental well-being with integrated health systems, streaks, metrics, and daily insights."
+section: "Core Features"
+order: 1
+parent: "dashboard"
+isAnchor: true
+---
+import GradientDivider from '../../../components/GradientDivider.astro'
+import DotDivider from '../../../components/DotDivider.astro'
+
+<div class="docs-card">
+  <h2>Introduction</h2>
+  <p>
+    The Health view is excellent for keeping track of all your health concerns in one place. It brings together both physical and mental aspects of your well-being into a single system so you can understand how everything is working together.
+  </p>
+  <p>
+    Aside from the Water view, Steps view, and Medications view being nested inside this page, the Health view itself gives you insight into your daily consistency, your body’s state, and the habits that support your overall well-being.
+  </p>
+</div>
+
+<GradientDivider />
+
+## Health Streaks
+When you enter the Health view, the first thing you will see is the Health Streaks card. This card includes two bubbles, one for Vitals and one for Exercise.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/health/view1.png" class="docs-image-single"/>
+<img src="/img/screenshots/health/view2.png" class="docs-image-single"/>
+</div>
+
+You gain streaks by logging your vitals and completing exercise consistently on a daily basis. These streaks help you stay accountable and give you a clear visual indicator of how consistent you are being with your health routines.
+
+<DotDivider />
+
+## Sleep Tracking
+Under the streaks card is your Sleep card. This card tells you how much sleep you got the previous night, which is pulled from Apple Health and determined by your watch data.
+
+<img src="/img/screenshots/health/sleepgoal.png" class="docs-image-single"/>
+
+You can adjust your sleep goal directly from the card using the plus button. On the left side of the card is a progress ring that shows your sleep progress. If you reached your goal, the ring will be full and display 100%. If not, it will fill based on the percentage you achieved.
+
+On the right side, you can always see your total sleep hours and your sleep goal displayed in two small bubble cards. This keeps your target and your result clearly visible at all times.
+
+<DotDivider />
+
+## Daily Completion
+Under the sleep card is what can be thought of as the completion bubble. This is a progress arch made of small bubbles that fill based on your daily activity.
+
+Your completion is determined by your water intake, your step count, whether you have journaled, and whether you have logged your mood for the day. Journaling and mood tracking were intentionally included to add balance, combining both physical and mental aspects of your health.
+
+This card is essentially asking you to take care of all of yourself, not just one part. Below the arch, you can see your percentages for water and steps, along with indicators showing whether you have journaled and logged your mood.
+
+Every night at midnight, this card resets, giving you a fresh start for the next day.
+
+<DotDivider />
+
+## Current Flow
+The Current Flow card is a data-driven card that shows your body state and nervous system state using two separate progress bars.
+
+Each bar fills based on your current state and includes a label that describes what that state means. For example, you may see something like "Rest Needed" for both your body and nervous system.
+
+<img src="/img/screenshots/health/flowdetails.png" class="docs-image-single"/>
+
+If you want to understand what each state means in detail, you can tap the center of the card to open a popup. This popup explains each possible state for both your body and nervous system. While the labels may be the same, they can represent very different things depending on whether they apply to your body or your nervous system.
+
+<DotDivider />
+
+## Health Metrics
+The Health Metrics card may look simple at first, but it contains a detailed tracking system.
+
+In the top right corner of the card is a plus button for adding your metrics. You can log your metrics as many times as you like throughout the day. Each day, the card resets, and if you have not logged anything yet, it displays a small message for encouragement.
+
+<img src="/img/screenshots/health/addmetrics.png" class="docs-image-single"/>
+
+When you tap the plus button, a popup appears allowing you to log your vitals. These include Blood Oxygen, Systolic, Diastolic, BPM, Body Temperature, and Weight. These are the core vitals used in the app’s health tracking system.
+
+You can also adjust the date and time before saving your entry. Once saved, your metrics appear on the card as pill tags on the right, with labels on the left.
+
+Tapping the center of the card opens your history view. This shows past entries as pill tags labeled by date. Selecting a date opens another popup showing all recorded metrics for that day. If you logged multiple times in one day, each entry appears in order of time.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/health/mhistory1.png" class="docs-image-single"/>
+<img src="/img/screenshots/health/mhistory2.png" class="docs-image-single"/>
+</div>
+
+You can delete entries using the delete button in the bottom right of the entry popup. A confirmation prompt will always appear before deletion, so you will not accidentally remove data.
+
+<DotDivider />
+
+## Exercise Tracking
+The Exercise card works almost identically to the Health Metrics card, but is focused on physical activity.
+
+When you tap the add button, you can enter the name of the exercise, the number of reps, the duration, and optionally adjust the date and time before saving.
+
+<img src="/img/screenshots/health/addexercise.png" class="docs-image-single"/>
+
+Once saved, your exercise entries appear on the card. Only two entries are shown at a time, with newer entries replacing older ones visually on the card.
+
+Tapping the center of the card opens your exercise history, where you can view entries by date. Selecting a date shows all details recorded for that session.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/health/ehistory1.png" class="docs-image-single"/>
+<img src="/img/screenshots/health/ehistory2.png" class="docs-image-single"/>
+</div>
+
+You can also delete exercise entries, and just like with metrics, all deletions are protected by a confirmation popup.
+
+<DotDivider />
+
+## Popup Behavior
+Throughout the Health view, popups are used to display detailed information. To keep navigation simple, you can tap anywhere outside of a popup to dismiss it.
+
+This ensures that you are never stuck inside a view and can always return to the main Health page easily.
+
+<GradientDivider />
+
+The Health view in Lystaria is designed to give you a complete picture of your well-being. By combining physical tracking, mental check-ins, consistency systems, and detailed data logs, it creates a space where your health is not just recorded, but understood.
+
+It encourages balance, consistency, and awareness across all areas of your life while still keeping everything accessible and easy to navigate.
