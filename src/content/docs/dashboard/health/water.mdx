@@ -1,0 +1,83 @@
+---
+title: "Water Tracking"
+description: "Track your daily water intake, plan your hydration, and review your history over time."
+section: "Core Features"
+order: 2
+parent: "health"
+---
+import GradientDivider from '../../../../components/GradientDivider.astro'
+import DotDivider from '../../../../components/DotDivider.astro'
+
+<div class="docs-card">
+  <h2>Introduction</h2>
+  <p>
+    The water tracking view is an easy feature to understand once you learn its mechanics. It is meant to give you a full overview of how much water you intake and help you keep track of your drinking habits throughout the day.
+  </p>
+  <p>
+    It combines simple logging with planning and history, allowing you to not only track what you drink, but also understand how consistent you are over time.
+  </p>
+</div>
+
+<details>
+  <summary>Table Of Contents</summary>
+  <ul>
+    <li>Water Planning</li>
+    <li>Daily Intake Progress</li>
+    <li>Logging Water</li>
+    <li>Goal Calendar and History</li>
+  </ul>
+</details>
+
+<GradientDivider />
+
+## Water Planning
+The first card is the Water Planning card. This feature is useful for people who are trying to control their water intake more closely.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/health/water/planned.png" class="docs-image-single"/>
+<img src="/img/screenshots/health/water/extra.png" class="docs-image-single"/>
+</div>
+
+Each day, the card resets so you can enter how many bottles of water you planned to drink and how many extra you had, if any. This gives you a clear comparison between what you intended to do and what you actually did.
+
+Tapping the middle of the planning card opens a popup showing your history for each day. It displays your planned amount along with any extra you recorded. The popup shows up to four entries at a time, and a load more button appears if there is additional history. The view resets when you close it.
+
+<DotDivider />
+
+## Daily Intake Progress
+Under the planning card is the progress ring for your daily water intake. This ring shows how much you have logged for the day compared to your goal.
+
+The display shows your total fluid ounces consumed out of your set goal. For example, if your goal is 80 fluid ounces and you have only logged 20, it will display 20 / 80. The progress ring will also visually fill based on that percentage.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/health/water/view1.png" class="docs-image-single"/>
+<img src="/img/screenshots/health/water/view2.png" class="docs-image-single"/>
+</div>
+
+This gives you a quick and clear understanding of how close you are to meeting your hydration goal.
+
+<DotDivider />
+
+## Logging Water
+The buttons on the water tracking card are simple and designed for quick use.
+
+There are quick add buttons for 8 and 20 fluid ounces, which add exactly those amounts instantly. There is also an "Other" button, which opens a popup where you can type in a custom amount.
+
+The refresh button updates your data if changes were made outside of the app, such as through Apple Health. For example, if you log 20 fluid ounces in the Health app, pressing refresh will bring that data into Lystaria.
+
+The Today button is used when navigating the goal calendar and will return you to the current day. The Goal button allows you to set a custom water goal within the app.
+
+Clear All will remove all fluid ounces you have added both from the app and from Apple Health. Clear Custom allows you to remove a specific custom amount, which is also reflected in Apple Health.
+
+<DotDivider />
+
+## Goal Calendar and History
+The goal calendar provides a simple way to view your water tracking history over time.
+
+You can tap any date bubble to see the data for that specific day. This data is reflected in the tracking card, while the planning card remains unchanged.
+
+You can also use the left and right chevron buttons to navigate between months, allowing you to view any day within those months.
+
+<GradientDivider />
+
+The Water Tracking system in Lystaria is designed to stay simple while still giving you meaningful insight into your habits. With planning, quick logging, syncing, and history, it helps you stay aware of your hydration without making the process complicated.
