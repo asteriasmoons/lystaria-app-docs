@@ -1,0 +1,161 @@
+---
+title: "Medications Manager"
+description: "Track, manage, and automate your medication inventory, refills, and history in one connected system."
+section: "Core Features"
+order: 6
+parent: "dashboard/health"
+---
+import GradientDivider from '../../../../components/GradientDivider.astro'
+import DotDivider from '../../../../components/DotDivider.astro'
+
+<div class="docs-card">
+  <h2>Introduction</h2>
+  <p>
+    The Medications Manager is designed to make your daily life easier by giving you a reliable and structured way to manage your medications. Instead of mentally tracking refills, inventory, and usage, this system handles those moving parts for you in a clear and predictable way.
+  </p>
+  <p>
+    It goes beyond simple tracking by automating key behaviors like refill rollovers, inventory resets, and history logging. When paired with reminders, it becomes part of a larger connected system that helps reduce stress, prevent mistakes, and keep everything in sync.
+  </p>
+</div>
+
+<details>
+  <summary>Table Of Contents</summary>
+  <ul>
+    <li>Overview Card</li>
+    <li>Automated Refill System</li>
+    <li>Adding a Medication</li>
+    <li>Managing Inventory</li>
+    <li>Medication Cards</li>
+    <li>Details & History</li>
+    <li>Reminder Integration</li>
+    <li>Responsibility & Safe Use</li>
+  </ul>
+</details>
+
+<GradientDivider />
+
+## Overview Card
+At the top of the page, the overview card gives you a quick summary of your medications setup.
+
+<img src="/img/screenshots/health/medications/view.png" class="docs-image-single"/>
+
+It shows how many medications you currently have stored and how many reminders are linked to medications. This gives you immediate visibility into how your system is set up without needing to open each individual medication.
+
+This is especially useful for quickly checking if everything is connected properly or if something is missing.
+
+<DotDivider />
+
+## Automated Refill System
+One of the most powerful parts of the Medications Manager is its automated refill behavior.
+
+When you set a refill date and provide a days supply, the system takes over from there. When the refill date arrives, it automatically advances the next refill date based on the days supply you entered. At the same time, your inventory is reset to full.
+
+Even if you manually adjust your inventory along the way, the system continues to function correctly. It will still roll forward to the next refill date without breaking or losing track of your schedule.
+
+This creates a stable system where you do not need to constantly micromanage dates or worry about things falling out of sync.
+
+<DotDivider />
+
+## Adding a Medication
+To add a medication, tap the plus icon in the top right of the page header.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/health/medications/add1.png" class="docs-image-single"/>
+<img src="/img/screenshots/health/medications/add2.png" class="docs-image-single"/>
+</div>
+
+When creating a new medication, you will fill in:
+- Medication name
+- Current amount
+- Supply amount
+- Days supply
+
+You also have the option to toggle on a refill date if your medication follows a refill schedule.
+
+Once you save, the medication will appear as a card below the overview section.
+
+<DotDivider />
+
+## Managing Inventory
+Adjusting your inventory is designed to be quick and flexible.
+
+<img src="/img/screenshots/health/medications/inventory.png" class="docs-image-single"/>
+
+To update an amount, tap the center of a medication card to open the adjustment popup. Inside, you will find:
+- A stepper to increase or decrease by custom amounts
+- Quick action buttons to add one or subtract one
+- A button to set your inventory to full
+
+The "set to full" option is especially useful if you receive an early refill or need to quickly reset your count without manually stepping through numbers.
+
+This system allows you to make changes easily without disrupting the underlying logic of your medication tracking.
+
+<DotDivider />
+
+## Medication Cards
+Each medication appears as its own card, giving you quick access to important actions.
+
+On every card, you will find three buttons:
+- Details
+- Edit
+- Delete
+
+The delete option always asks for confirmation before removing anything, helping prevent accidental loss of data.
+
+These cards act as your central control point for each medication, allowing you to quickly move between viewing, editing, and managing your data.
+
+<DotDivider />
+
+## Details & History
+Tapping the details button opens a popup where you can view all information about a medication at a glance.
+
+<div class="docs-image-row">
+<img src="/img/screenshots/health/medications/details.png" class="docs-image-single"/>
+<img src="/img/screenshots/health/medications/history.png" class="docs-image-single"/>
+</div>
+
+This includes:
+- Name
+- Current amount
+- Supply amount
+- Days supply
+- Refill date (if set)
+
+Within the details popup, you have three actions:
+- Close
+- History
+- Edit
+
+The History section gives you a full log of activity for that medication. This includes inventory adjustments, edits, and refill events. Entries typically show actions like "Refilled" or "Edited," along with clear changes such as moving from one amount to another.
+
+You can long press on any history record to delete it, with a confirmation step to prevent mistakes. Keep in mind that removing history entries can affect your inventory accuracy, so it is important to double-check your values afterward.
+
+<DotDivider />
+
+## Reminder Integration
+The Medications Manager becomes even more powerful when used alongside reminders.
+
+When creating a reminder, you can link medications directly to it. Standard reminders allow one medication per reminder, while routine reminders support linking multiple medications at once.
+
+For each linked medication, you can define how much should be deducted when the reminder is completed. This can be done using:
+- A consistent daily decrement amount
+- A custom weekly setup where each day has its own decrement value
+
+Each time you complete a reminder, the system automatically subtracts the configured amount from your inventory and logs the change in history.
+
+This connection transforms the Medications Manager from a simple tracker into part of a fully integrated life system, where actions in one area directly affect another.
+
+<DotDivider />
+
+## Responsibility & Safe Use
+While the Medications Manager is a powerful tool, it is important to use it responsibly.
+
+This system is designed to support your awareness and organization, but it does not replace professional medical advice or instructions from your healthcare provider. Always follow prescribed dosages and schedules, even if your app data appears differently.
+
+Keeping your inventory accurate is essential. Regularly updating your counts and reviewing your details ensures that the system continues to reflect your real-world usage.
+
+The goal of this feature is to reduce stress, prevent missed doses, and give you confidence in your routine. When used thoughtfully, it can help you feel more in control of something that is often difficult to manage mentally.
+
+<GradientDivider />
+
+The Medications Manager brings structure, automation, and clarity to something that can easily become overwhelming. By combining refill tracking, inventory management, history logs, and reminder integration, it creates a system that works with you instead of against you. Over time, this consistency helps build trust in your routine and allows you to focus less on tracking and more on simply taking care of yourself.
