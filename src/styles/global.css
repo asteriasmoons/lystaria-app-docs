@@ -441,6 +441,38 @@ a:hover {
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.6);
 }
+
+/* Privacy Policy / Prose Section */
+.prose-section {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.5rem 6rem;
+}
+
+.prose-section h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-text-primary, #fff);
+}
+
+.prose-section p {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--color-text-secondary, rgba(255, 255, 255, 0.65));
+  margin-bottom: 1rem;
+}
+
+.prose-section a {
+  color: var(--color-accent, #03dbfc);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose-section a:hover {
+  opacity: 0.8;
+}
    
 
 /* =========================================================

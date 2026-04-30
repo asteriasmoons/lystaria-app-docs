@@ -1,0 +1,143 @@
+---
+import DocsLayout from "../layouts/DocsLayout.astro";
+---
+
+<DocsLayout
+  title="Privacy Policy — Lystaria"
+  description="Privacy policy for the Lystaria iOS app."
+>
+  <main class="home-page">
+    <section class="hero">
+      <p class="eyebrow">Legal</p>
+      <h1 class="hero-title">Privacy Policy</h1>
+      <p class="hero-text">Last updated: April 30, 2025</p>
+    </section>
+
+    <section class="prose-section">
+      <h2>Overview</h2>
+      <p>
+        Lystaria is a personal wellness and productivity app built for iOS. This
+        privacy policy explains what data Lystaria collects, where it lives, and
+        how it is used. The short version: your personal data stays on your
+        device and in your iCloud account. Lystaria does not sell your data,
+        does not serve you ads, and does not share your information with third
+        parties for any commercial purpose.
+      </p>
+
+      <h2>Data You Create in Lystaria</h2>
+      <p>
+        Everything you log, write, or track in Lystaria — journal entries, mood
+        logs, habits, reminders, calendar events, notes, reading sessions,
+        health metrics, medications, symptom logs, checklists, bookmarks, and
+        all other personal content — is stored locally on your device using
+        SwiftData. If you are signed in with iCloud, this data syncs to your
+        private iCloud account via CloudKit. At no point is this data
+        transmitted to Lystaria's servers or any third party.
+      </p>
+
+      <h2>iCloud and CloudKit</h2>
+      <p>
+        Lystaria uses Apple's CloudKit framework to sync your data across your
+        devices. This sync occurs between your device and your personal iCloud
+        account, which is managed entirely by Apple. Lystaria does not have
+        access to your CloudKit data. Apple's privacy policy governs how iCloud
+        handles your data. You can review it at
+        <a
+          href="https://www.apple.com/legal/privacy/"
+          target="_blank"
+          rel="noopener noreferrer">apple.com/legal/privacy</a
+        >.
+      </p>
+
+      <h2>Apple HealthKit</h2>
+      <p>
+        Lystaria integrates with Apple HealthKit to read and write
+        health-related data including step count, water intake, sleep data,
+        heart rate variability, resting heart rate, and exercise sessions. This
+        data is accessed only with your explicit permission and is used solely
+        to power features within the app such as the sleep score card, daily
+        completion tracking, body state analysis, and health streaks. Lystaria
+        does not transmit HealthKit data to any server, and it is never used for
+        advertising or shared with third parties.
+      </p>
+
+      <h2>Apple Sign In</h2>
+      <p>
+        Lystaria uses Sign in with Apple for account authentication. When you
+        sign in, Apple provides Lystaria with a unique user identifier and,
+        optionally, your name. Lystaria does not receive your Apple ID email
+        address unless you choose to share it. This identifier is stored locally
+        on your device to associate your data with your account. No
+        authentication data is transmitted to external servers by Lystaria.
+      </p>
+
+      <h2>Horoscope and Astrology Content</h2>
+      <p>
+        If you use the Daily Astrology feature, Lystaria sends a request to a
+        third-party horoscope API to fetch a reading for your selected zodiac
+        sign. This request includes only the zodiac sign name — no personal
+        identifiers, account information, or device data is included. The
+        response is stored locally on your device for the day and is not shared
+        further.
+      </p>
+
+      <h2>Widgets</h2>
+      <p>
+        Lystaria includes home screen and lock screen widgets that display
+        information such as your last mood log date, reading progress, and
+        health data. Widget data is shared between the main app and the widget
+        extension using a shared App Group stored locally on your device. No
+        widget data is transmitted externally.
+      </p>
+
+      <h2>Data We Do Not Collect</h2>
+      <p>
+        Lystaria does not collect analytics, crash reports, usage data, device
+        identifiers, advertising identifiers, IP addresses, or any form of
+        behavioral tracking. There are no third-party analytics SDKs integrated
+        into Lystaria.
+      </p>
+
+      <h2>In-App Purchases</h2>
+      <p>
+        Lystaria offers an optional premium subscription through Apple's
+        StoreKit framework. All payment processing is handled entirely by Apple.
+        Lystaria does not collect, store, or have access to any payment or
+        billing information.
+      </p>
+
+      <h2>Children's Privacy</h2>
+      <p>
+        Lystaria is not directed at children under the age of 13 and does not
+        knowingly collect personal information from children. If you believe a
+        child has used Lystaria and provided personal information, please
+        contact us so we can take appropriate action.
+      </p>
+
+      <h2>Data Deletion</h2>
+      <p>
+        Because Lystaria stores all data locally on your device and in your
+        personal iCloud account, you have full control over your data at all
+        times. You can delete individual entries, logs, or records from within
+        the app. Deleting the app from your device removes all locally stored
+        data. To remove iCloud data, you can manage your iCloud storage directly
+        through iOS Settings.
+      </p>
+
+      <h2>Changes to This Policy</h2>
+      <p>
+        If this privacy policy changes in a meaningful way, the updated version
+        will be published here with a revised date at the top of the page.
+        Continued use of Lystaria after changes are posted constitutes
+        acceptance of the updated policy.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        If you have questions about this privacy policy or how Lystaria handles
+        your data, you can reach out at
+        <a href="mailto:contact@lystaria.im">contact@lystaria.im</a>.
+      </p>
+    </section>
+  </main>
+</DocsLayout>
