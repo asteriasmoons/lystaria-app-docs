@@ -613,6 +613,7 @@ a:hover {
   width: 320px;
   max-width: calc(100vw - 2rem);
   height: 100vh;
+  height: 100dvh;
   z-index: 2000;
   transform: translateX(-100%);
   transition: transform 0.28s ease;
@@ -623,6 +624,11 @@ a:hover {
   -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
   overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
 }
 
 body.sidebar-open .sidebar-drawer {
@@ -651,6 +657,26 @@ body.sidebar-open .docs-backdrop {
   gap: 1rem;
   padding: 1rem 1rem 0.9rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+
+.sidebar-nav {
+  padding: 1rem 0.75rem 2rem;
+  flex: 1;
+  min-height: 0;
+}
+
+.sidebar-drawer::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-drawer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-drawer::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6055f7, #03e3fc);
+  border-radius: 10px;
 }
 
 .sidebar-brand {
@@ -743,24 +769,6 @@ body.sidebar-open .docs-backdrop {
   display: block;
   flex-shrink: 0;
   pointer-events: none;
-}
-
-.sidebar-nav {
-  padding: 1rem 0.75rem 1.25rem;
-}
-
-.sidebar-drawer {
-  overflow-y: auto;
-  height: 100vh;
-}
-
-.sidebar-drawer::-webkit-scrollbar {
-  width: 6px;
-}
-
-.sidebar-drawer::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #6055f7, #03e3fc);
-  border-radius: 10px;
 }
 
 .nav-group + .nav-group {

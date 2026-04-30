@@ -275,6 +275,35 @@ const groupedDocs = Object.entries(groupedDocsMap)
             </div>
           ))
         }
+
+        <div class="nav-group">
+          <p class="nav-section">Legal</p>
+
+          <ul class="nav-list">
+            <li>
+              <a
+                href="/contact"
+                class:list={{
+                  "nav-link": true,
+                  "nav-link-active": currentPath === "/contact",
+                }}
+              >
+                <span class="nav-link-text">Contact</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="/privacy-policy"
+                class:list={{
+                  "nav-link": true,
+                  "nav-link-active": currentPath === "/privacy-policy",
+                }}
+              >
+                <span class="nav-link-text">Privacy Policy</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </aside>
 
