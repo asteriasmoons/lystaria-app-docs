@@ -1,0 +1,121 @@
+---
+import DocsLayout from "../layouts/DocsLayout.astro";
+---
+
+<DocsLayout
+  title="Contact — Lystaria Docs"
+  description="Send a message to the Lystaria team."
+>
+  <main class="home-page">
+    <section class="hero">
+      <p class="eyebrow">Get in Touch</p>
+      <h1 class="hero-title">Contact Us</h1>
+      <p class="hero-text">
+        Questions, feedback, or support requests — send a message and we'll get
+        back to you.
+      </p>
+    </section>
+
+    <section class="contact-form-section">
+      <div class="contact-form-card">
+        <form id="contactForm" class="contact-form" novalidate>
+
+          <!-- Honeypot -->
+          <input
+            id="website"
+            name="website"
+            type="text"
+            autocomplete="off"
+            tabindex="-1"
+            class="contact-hp"
+          />
+
+          <div class="contact-field">
+            <label for="name" class="contact-label">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              class="contact-input"
+              placeholder="Your name"
+              required
+            />
+          </div>
+
+          <div class="contact-field">
+            <label for="email" class="contact-label">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              class="contact-input"
+              placeholder="your@email.com"
+              required
+            />
+          </div>
+
+          <div class="contact-field">
+            <label for="message" class="contact-label">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              class="contact-input contact-textarea"
+              placeholder="What's on your mind?"
+              rows="6"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" id="sendBtn" class="contact-submit">
+            Send Message
+          </button>
+
+          <p class="contact-status" id="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+</DocsLayout>
+
+<script>
+  const form = document.getElementById("contactForm") as HTMLFormElement | null;
+  const status = document.getElementById("status") as HTMLElement | null;
+  const sendBtn = document.getElementById("sendBtn") as HTMLButtonElement | null;
+
+  if (form && status && sendBtn) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      status.textContent = "";
+      sendBtn.disabled = true;
+      sendBtn.textContent = "Sending...";
+
+      const name = (form.elements.namedItem("name") as HTMLInputElement)?.value ?? "";
+      const email = (form.elements.namedItem("email") as HTMLInputElement)?.value ?? "";
+      const message = (form.elements.namedItem("message") as HTMLTextAreaElement)?.value ?? "";
+      const website = (form.elements.namedItem("website") as HTMLInputElement)?.value ?? "";
+
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, message, website }),
+        });
+
+        const data = await res.json().catch(() => ({}));
+
+        if (!res.ok) {
+          status.textContent = data.error || "Something went wrong.";
+          return;
+        }
+
+        form.reset();
+        status.textContent = "Message sent. Thank you.";
+      } catch {
+        status.textContent = "Failed to send. Please try again.";
+      } finally {
+        sendBtn.disabled = false;
+        sendBtn.textContent = "Send Message";
+      }
+    });
+  }
+</script>

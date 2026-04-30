@@ -473,6 +473,101 @@ a:hover {
 .prose-section a:hover {
   opacity: 0.8;
 }
+
+/* Contact Form */
+.contact-form-section {
+  padding: 0 1.5rem 6rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.contact-form-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.contact-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.contact-input {
+  width: 100%;
+  padding: 0.72rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-size: 0.9375rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.contact-input:focus {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.contact-textarea {
+  min-height: 150px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.contact-submit {
+  align-self: flex-start;
+  padding: 0.72rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #03dbfc, #7d19f7);
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.contact-submit:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.contact-submit:disabled {
+  opacity: 0.5;
+  cursor: default;
+  transform: none;
+}
+
+.contact-status {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.65);
+  min-height: 1.2em;
+}
+
+.contact-hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
    
 
 /* =========================================================
