@@ -1250,6 +1250,21 @@ details li::before {
   opacity: 0.8;
 }
 
+.policy-page-break {
+  break-before: page;
+  page-break-before: always;
+  height: 12rem;
+  width: 100%;
+  margin: 8rem 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background:
+    radial-gradient(circle at center,
+      rgba(3,219,252,0.08),
+      rgba(125,25,247,0.04),
+      transparent 70%);
+}
+
 .feature-card {
   display: block;
   padding: 1.2rem;
