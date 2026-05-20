@@ -1254,66 +1254,21 @@ details li::before {
   break-before: page;
   page-break-before: always;
   width: min(100%, 1100px);
-  margin: 5rem auto 4.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.policy-page-break::before,
-.policy-page-break::after {
-  content: "";
-  flex: 1;
   height: 1px;
+  margin: 5rem auto 4.5rem;
+  border: 0;
+  border-radius: 999px;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(96, 85, 247, 0.8),
-    rgba(3, 227, 252, 0.8),
+    rgba(96, 85, 247, 0.85),
+    rgba(3, 227, 252, 0.85),
+    rgba(96, 85, 247, 0.85),
     transparent
   );
   box-shadow:
-    0 0 12px rgba(96, 85, 247, 0.35),
-    0 0 18px rgba(3, 227, 252, 0.25);
-}
-
-.policy-page-break::after {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(3, 227, 252, 0.8),
-    rgba(96, 85, 247, 0.8),
-    transparent
-  );
-}
-
-.policy-page-break::marker {
-  display: none;
-}
-
-.policy-page-break {
-  color: transparent;
-}
-
-.policy-page-break::selection {
-  background: transparent;
-}
-
-.policy-page-break::before {
-  margin-right: 0.25rem;
-}
-
-.policy-page-break::after {
-  margin-left: 0.25rem;
-}
-
-.policy-page-break::before,
-.policy-page-break::after {
-  border-radius: 999px;
-}
-
-.policy-page-break {
-  min-height: 2rem;
+    0 0 12px rgba(96, 85, 247, 0.45),
+    0 0 18px rgba(3, 227, 252, 0.35);
 }
 
 .policy-page-break + .prose-section {
